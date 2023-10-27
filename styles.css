@@ -1,0 +1,217 @@
+
+
+/*--============== Default CSS ==================--*/
+/*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}*/
+/*--============== Default CSS ==================--*/
+
+body {
+background-color: rgb(10, 10, 10);
+
+margin: -10px 0px 0px 0px; 
+}
+
+
+/*--============== Heading Left==================--*/
+.heading {
+    font-family: Impact, ;
+    font-size: 2em ;
+    margin: -10px 0px 0px 20px 
+
+}
+
+
+
+.logo {
+    
+    border: 0px dotted rgb(230, 14, 14) ;
+    width: fit-content;
+    height: min-content;
+    padding: 5px 5px 5px 5px;
+    margin: 10px 0px 0px 100px ;
+}
+.logo_text {
+border: 0px dotted orange;
+    font-size: 2em;
+    color: rgb(10, 10, 10);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 5px 5px 5px 5px ;
+}
+/*--============== Navgations ==================--*/
+
+
+
+
+.navbar {
+    border: 0px dotted yellow;
+margin: 10px 10px 10px 450px;
+padding: 8px 10px 12px 10px ;
+}
+
+#mnu {
+    background-color: white;
+    width: 100%;
+    height: auto;
+    }
+.navmain {
+   /* border: 5px rgb(225, 0, 255); */
+    border-bottom: 10px solid rgb(79,185,227);
+    display: flex;
+    position: fixed;
+    color: white;
+    width: 100px;
+    margin: 0px 0px 0px 0px ;
+    padding: 0px 0px -15px 0px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 1, 1);
+}
+
+
+span > a {
+    border: 2px solid yellow;
+    border-radius: .24em ;
+    display: inline-block;
+     background: rgba(14, 106, 212, 0.945);
+    color: rgb(252, 251, 250);
+    font-size: 1.5em;
+    padding: 5px 5px 5px 5px;
+    margin-top: 0px 0px 0px 0px ;
+    transition: .5s;
+}
+
+
+span  > 
+            a:link {
+    text-decoration: none;
+}
+span  > 
+            a:visited {
+
+    text-decoration: none;
+}
+span  > 
+            a:hover {
+    border: 2px dashed rgba(128, 128, 128, 0.404);
+}
+span  > 
+            a:active {
+    text-decoration: none;
+}
+
+.head{
+
+    direction: vertical l;
+}
+
+
+/*===========  >>>  Home   ===========*/
+
+.box {
+    float: right;
+    margin-right: 15px;
+    margin-top: 15px;
+    width:400px;
+    height: 400px;
+    border-radius: 2em;
+    background-color: rgb(207,232,220);
+    color: rgb(247, 243, 7);
+    padding: 0px 0px 0px 0px;
+    justify-content: center;
+  } 
+
+  .wrapper {
+    background-color: rgb(79,185,227);
+    padding: 10px;
+    border-radius: 20px;
+    color: #fff; 
+    overflow-block: hidden;
+    width: auto;
+    height: 480px;
+  }
+
+/*===========   Home >>>  ===========*/
+  
+.stky 
+        {
+    font-size: x-large;
+    background-color: rgba(26, 25, 24, 0.973);
+    color: white;
+    
+    border-left: 10px dashed yellow;
+    border-bottom: 10px dashed rgba(255, 0, 0, 0.007);
+    border-top: 20px solid rgba(255, 255, 0, 0);
+    border-right: 10px dashed yellow;
+    border-top-right-radius: 0em;
+    border-bottom-right-radius: 0em;
+    border-bottom-left-radius: 0em;
+    border-top-left-radius: 0em;
+    
+    padding:20px;
+    position: stick;
+    top: 0px;
+    left: 0;
+    margin: 0em 0;
+
+    box-shadow: rgb(230, 14, 14),0.6
+    ;
+}
+
+.bu
+ .card1 {
+    display: inline-block;
+    
+   background-color: blue;
+
+    width: 200px;
+    height: 300px;
+    padding: none  ;
+}
+
+h1 {
+font-size: 2em;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+color-scheme: light;
+
+
+
+}
+footer {
+    padding: 20px;
+    align-content: space-around;
+    margin-bottom: 0px;
+
+
+}
+
+/* Top Button */
+
+    .top {
+
+    position: sticky;
+    color: red;
+    border: 2px dotted green;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 5px 5px 5px;
+    margin-left: 1240px;
+    margin-bottom: 25px;
+    border-radius: 25px;
+
+    }
+
+img {
+justify-content: center;
+    width: 100%;
+    max-height: fit-content;
+    border-radius: 3rem;
+}
+#tip {
+    letter-spacing: 5px;
+}
