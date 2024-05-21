@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsing Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: yellow;
+        }
+        .important {
+            color: red;
+        }
+        .code-box {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Parsing Questions</h1>
+
+    <h2>Question 1: Role of <span class="important">ACTION</span> and <span class="important">GOTO</span> tables in the LR parsing algorithm</h2>
+
+    <p><span class="important">ACTION</span> Table:</p>
+    <ul>
+        <li><span class="important">Role:</span> The <span class="important">ACTION</span> table guides the parser on what action to take when encountering a specific terminal symbol in a specific state.</li>
+        <li><span class="important">Entries:</span> The entries in the <span class="important">ACTION</span> table can be "shift", "reduce", "accept", or "error".</li>
+        <li><span class="important">Indexes:</span> The <span class="important">ACTION</span> table is indexed by the current state (row index) and the current terminal symbol from the input (column index).</li>
+    </ul>
+
+    <p><span class="important">GOTO</span> Table:</p>
+    <ul>
+        <li><span class="important">Role:</span> The <span class="important">GOTO</span> table indicates the state to transition to after reducing a production and pushing a non-terminal symbol onto the stack.</li>
+        <li><span class="important">Entries:</span> Each entry in the <span class="important">GOTO</span> table is a state number.</li>
+        <li><span class="important">Indexes:</span> The <span class="important">GOTO</span> table is indexed by the current state (row index) and the non-terminal symbol (column index).</li>
+    </ul>
+
+    <h2>Question 2: Inputs and outputs of a <span class="important">lexer</span> parser</h2>
+
+    <p><span class="important">Inputs</span> of a <span class="important">Lexer</span>:</p>
+    <ul>
+        <li>The source code or input text to be tokenized.</li>
+        <li>A set of regular expressions or rules defining the tokens of the language.</li>
+    </ul>
+
+    <p><span class="important">Outputs</span> of a <span class="important">Lexer</span>:</p>
+    <ul>
+        <li>A sequence of tokens, each typically containing:
+            <ul>
+                <li><span class="important">Token type:</span> The category of the token (e.g., keyword, identifier, operator).</li>
+                <li><span class="important">Lexeme:</span> The actual substring from the source code that corresponds to the token.</li>
+                <li><span class="important">Position:</span> Information about where the token appears in the source code (e.g., line number, column number).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Question 3: Issues with generating an <span class="important">LL(1)</span> parser for the given grammar</h2>
+
+    <div class="code-box">
+        S -> if E then S else S end
+        S -> if E then S end
+    </div>
+
+    <p>The shared initial segment is "if E then S".</p>
+
+    <p><span class="important">Explanation:</span></p>
+    <ul>
+        <li>In <span class="important">LL(1)</span> parsing, the parser makes decisions based on the next input symbol and the current non-terminal to expand.</li>
+        <li>The given productions share the initial segment "if E then S", which means the parser cannot decide whether to apply the first or second production solely based on the next token.</li>
+        <li><span class="important">LL(1)</span> parsers require a single token of lookahead to make parsing decisions, and with this shared prefix, the lookahead token is insufficient to distinguish between the two productions.</li>
+    </ul>
+
+    <h2>Question 4: Rewriting the grammar for <span class="important">LL(1)</span> parsing</h2>
+
+    <div class="code-box">
+        S -> if E then S S'
+        S' -> else S end
+             | end
+    </div>
+
+    <p>This eliminates the ambiguity by ensuring that after parsing "if E then S", the next token ("else" or "end") determines which rule to apply.</p>
+
+    <h2>Question 5: Eliminate the shared initial segments</h2>
+
+    <div class="code-box">
+        A -> aAbCeDg
+        A -> aAbCd
+
+        B -> eDgEf
+    </div>
+
+    <p>Factor out the common prefix:</p>
+
+    <div class="code-box">
+        A -> aAbC A'
+        A' -> eDg
+           | d
+
+        B -> eDgE B'
+        B' -> f
+             | ε
+    </div>
+
+    <h2>Question 6: General method for eliminating shared initial segments</h2>
+
+    <p><span class="important">Method:</span></p>
+    <ol>
+        <li>Identify the longest common prefix among the productions of a non-terminal.</li>
+        <li>Factor out this common prefix.</li>
+        <li>Introduce a new non-terminal to handle the different suffixes.</li>
+        <li>Replace the original productions with the factored ones.</li>
+    </ol>
+
+    <p><span class="important">Example:</span></p>
+
+    <div class="code-box">
+        A -> αβ1 | αβ2 | ... | αβn
+    </div>
+
+    <p>Factor out α:</p>
+
+    <div class="code-box">
+        A -> αA'
+        A' -> β1 | β2 | ... | βn
+    </div>
+
+    <h2>Question 7: Argument for same language generation after factoring</h2>
+
+    <p><span class="important">Argument:</span></p>
+    <ul>
+        <li>Factoring the common prefix does not change the structure of the language, it merely reorganizes the grammar rules.</li>
+        <li>Any derivation in the original grammar can be mapped to a corresponding derivation in the factored grammar, ensuring that both grammars generate the same strings.</li>
+        <li>By recursively applying the common prefix factoring, we ensure that all possible derivations are preserved.</li>
+    </ul>
+
+    <h2>Question 8: Showing ambiguity in balanced parentheses grammar</h2>
+
+    <div class="code-box">
+        S -> ε
+           | (S)
+           | SS
+    </div>
+
+    <p><span class="important">Ambiguity Proof:</span></p>
+    <p>Consider the string "()":</p>
+    <ol>
+        <li>Using <span class="code-box">S -> (S)</span> and then <span class="code-box">S -> ε</span>:
+            <div class="code-box">
+                S -> (S) -> ()
+            </div>
+        </li>
+        <li>Using <span class="code-box">S -> SS</span> and then <span class="code-box">S -> ε</span> for both <span class="code-box">S</span>:
+            <div class="code-box">
+                S -> SS -> (S)S -> ()S -> ()
+            </div>
+        </li>
+    </ol>
+
+    <p>Thus, the string "()" has more than one leftmost derivation, demonstrating that the grammar is <span class="important">ambiguous</span>.</p>
+
+    <h2>Question 9: Considering the context-free grammar</h2>
+
+    <div class="code-box">
+        S -> Aa | Bab
+        A -> BB
+        B -> c
+        B -> de
+    </div>
+
+    <p>To analyze or transform this grammar for various parsing techniques, the steps involve ensuring the grammar is suitable for the intended parsing method, such as ensuring it's <span class="important">LL(1)</span> by eliminating ambiguities and factoring common prefixes where necessary. Each non-terminal and production rule needs to be examined for common prefixes and ambiguity.</p>
+</body>
+</html>
