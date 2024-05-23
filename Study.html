@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8086 Microprocessor Details</title>
+    <style>
+        h2 {
+            background-color: yellow;
+        }
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Question 1: List any <span class="highlight">6</span> features of <span class="highlight">8086 microprocessor</span> (4 marks)</h2>
+    <p>
+        <strong>Detail:</strong><br>
+        The <span class="highlight">8086 microprocessor</span>, developed by <span class="highlight">Intel</span>, is a <span class="highlight">16-bit processor</span> that <span class="highlight">revolutionized</span> computing in the late <span class="highlight">1970s</span>. It features a <span class="highlight">20-bit address bus</span>, enabling it to address <span class="highlight">1 MB</span> of memory. The architecture includes a powerful set of <span class="highlight">instructions</span>, supports <span class="highlight">segmented memory</span> for better management, and incorporates an <span class="highlight">instruction queue</span> for faster processing. It also features <span class="highlight">separate data and address lines</span>, enhancing performance and multitasking capabilities, and supports both <span class="highlight">minimum and maximum mode operations</span> for flexible system configurations.
+    </p>
+
+    <h2>Question 2: Explain the function of following pins of <span class="highlight">8085 processor</span> (4 marks)</h2>
+    <p>
+        <strong>Detail:</strong><br>
+        <strong>i. ALE (Address Latch Enable):</strong> The <span class="highlight">ALE pin</span> is used to <span class="highlight">demultiplex</span> the address-data bus. It signals when the <span class="highlight">address bus</span> is carrying valid address information, allowing the connected latch to capture and hold this address for memory operations.
+    </p>
+    <p>
+        <strong>ii. HOLD:</strong> The <span class="highlight">HOLD pin</span> is used by external devices to gain control of the bus. When an external device wants to take over the system bus, it sends a <span class="highlight">HOLD signal</span> to the processor. The processor completes its current cycle and then grants the bus by asserting the <span class="highlight">HLDA (Hold Acknowledge) signal</span>.
+    </p>
+    <p>
+        <strong>iii. HLDA (Hold Acknowledge):</strong> The <span class="highlight">HLDA pin</span> indicates that the processor has received a HOLD request and has <span class="highlight">relinquished</span> control of the bus. The external device can then control the bus until the <span class="highlight">HOLD signal</span> is <span class="highlight">deasserted</span>.
+    </p>
+
+    <h2>Question 3: Given <span class="highlight">SS: 3450H</span>; <span class="highlight">SP: 2A56H</span>, calculate the physical address. (4 marks)</h2>
+    <p>
+        <strong>Detail:</strong><br>
+        To calculate the <span class="highlight">physical address</span> in the <span class="highlight">8086 microprocessor</span>, we use the formula: <code>Physical Address = Segment Address * 10H + Offset</code>. Here, the <span class="highlight">Stack Segment (SS)</span> is <span class="highlight">3450H</span> and the <span class="highlight">Stack Pointer (SP)</span> is <span class="highlight">2A56H</span>.
+    </p>
+    <p>
+        1. Convert SS to a <span class="highlight">20-bit segment address</span>: <code>3450H * 10H = 34500H</code>.<br>
+        2. Add the SP offset: <code>34500H + 2A56H = 36F56H</code>.
+    </p>
+    <p>
+        Thus, the physical address is <span class="highlight">36F56H</span>.
+    </p>
+
+    <h2>Question 4: List any <span class="highlight">2</span> addressing modes with example. Identify the addressing mode of the instruction <span class="highlight">MOV AL, [SI]</span> (4 marks)</h2>
+    <p>
+        <strong>Detail:</strong><br>
+        <span class="highlight">Addressing Modes</span>:
+    </p>
+    <p>
+        1. <span class="highlight">Immediate Addressing Mode:</span> The operand is specified directly in the instruction. Example: <code>MOV AL, 34H</code> (moves the immediate value <span class="highlight">34H</span> into <span class="highlight">AL</span>).<br>
+        2. <span class="highlight">Direct Addressing Mode:</span> The effective address of the operand is given directly in the instruction. Example: <code>MOV AX, [1234H]</code> (moves the contents of memory location <span class="highlight">1234H</span> into <span class="highlight">AX</span>).
+    </p>
+    <p>
+        <span class="highlight">MOV AL, [SI]:</span> This instruction uses the <span class="highlight">Register Indirect Addressing Mode</span>. Here, the address of the operand is specified in the <span class="highlight">SI register</span>.
+    </p>
+
+    <h2>Question 5: Draw the internal architecture of <span class="highlight">8086</span>. (4 marks)</h2>
+    <p>
+        <strong>Detail:</strong><br>
+        The <span class="highlight">internal architecture</span> of the <span class="highlight">8086 microprocessor</span> includes several key components:
+    </p>
+    <p>
+        - <span class="highlight">Bus Interface Unit (BIU):</span> Handles all data and address transfers on the buses. It includes the <span class="highlight">instruction queue</span>, <span class="highlight">segment registers</span>, and <span class="highlight">address adder</span>.<br>
+        - <span class="highlight">Execution Unit (EU):</span> Executes instructions from the instruction queue. It includes the <span class="highlight">ALU</span>, <span class="highlight">general-purpose registers</span>, and the <span class="highlight">control unit</span>.<br>
+        - <span class="highlight">Segment Registers:</span> <span class="highlight">CS</span>, <span class="highlight">DS</span>, <span class="highlight">SS</span>, <span class="highlight">ES</span> for segment addressing.<br>
+        - <span class="highlight">Instruction Queue:</span> Prefetches up to six bytes of instructions for faster execution.<br>
+        - <span class="highlight">Control Unit:</span> Manages the execution of instructions.
+    </p>
+
+    <h2>Question 6: Explain memory segmentation in <span class="highlight">8086</span>. (4 marks)</h2>
+    <p>
+        <strong>Detail:</strong><br>
+        <span class="highlight">Memory segmentation</span> in the <span class="highlight">8086 microprocessor</span> divides the memory into segments to enhance the efficiency and flexibility of data access. Each segment can be up to <span class="highlight">64KB</span>, and there are four main types of segments: <span class="highlight">Code Segment (CS)</span>, <span class="highlight">Data Segment (DS)</span>, <span class="highlight">Stack Segment (SS)</span>, and <span class="highlight">Extra Segment (ES)</span>. Segments are addressed using <span class="highlight">segment registers</span> and <span class="highlight">offsets</span>, which are combined to form a <span class="highlight">physical address</span>. This approach allows for <span class="highlight">modular</span> program design, <span class="highlight">easier memory management</span>, and <span class="highlight">efficient utilization of memory</span>.
+    </p>
+
+    <h2>Question 7: Difference between minimum mode and maximum mode. (4 marks)</h2>
+    <p>
+        <strong>Detail:</strong><br>
+        <span class="highlight">Minimum Mode:</span>
+    </p>
+    <ul>
+        <li>The <span class="highlight">8086 operates</span> as a <span class="highlight">single processor</span>.</li>
+        <li>Control signals for memory and I/O operations are generated <span class="highlight">internally</span>.</li>
+        <li><span class="highlight">Simple system design</span>, ideal for single-processor systems.</li>
+    </ul>
+    <p>
+        <span class="highlight">Maximum Mode:</span>
+    </p>
+    <ul>
+        <li>The <span class="highlight">8086</span> can function as one of several processors in a <span class="highlight">multiprocessor system</span>.</li>
+        <li>Requires an <span class="highlight">external bus controller (8288)</span> to generate <span class="highlight">control signals</span>.</li>
+        <li>Supports <span class="highlight">complex, high-performance computing environments</span> with multiple processors.</li>
+    </ul>
+
+    <h2>Question 8: Draw the flag register of <span class="highlight">8086</span>. Explain any <span class="highlight">2</span> control flags. (4 marks)</h2>
+    <p>
+        <strong>Detail:</strong><br>
+        The <span class="highlight">8086 flag register</span> consists of <span class="highlight">16 bits</span> and includes <span class="highlight">status</span>, <span class="highlight">control</span>, and <span class="highlight">system flags</span>. Key control flags include:
+    </p>
+    <p>
+        1. <span class="highlight">Direction Flag (DF):</span> Determines the direction of <span class="highlight">string operations</span>. When set, string operations process data from <span class="highlight">higher to lower memory addresses</span>.
+    </p>
+    <p>
+        2. <span class="highlight">Interrupt Flag (IF):</span> Controls the enabling and disabling of <span class="highlight">interrupts</span>. When set, the processor responds to <span class="highlight">maskable interrupts</span>; when cleared, it ignores them.
+    </p>
+
+    <h2>Question 9: Draw the timing diagram of maximum mode memory read cycle. (4 marks)</h2>
+    <p>
+        <strong>Detail:</strong><br>
+        In <span class="highlight">maximum mode</span>, the <span class="highlight">8086 microprocessor</span> involves external bus controllers for managing the timing of memory read cycles. The <span class="highlight">timing diagram</span> includes:
+    </p>
+    <ul>
+        <li><span class="highlight">Status signals:</span> Indicating the type of operation.</li>
+        <li><span class="highlight">Address and Data buses:</span> Showing the address and data transfer phases.</li>
+        <li><span class="highlight">Control signals:</span> Such as <span class="highlight">RD (Read)</span>, <span class="highlight">DEN (Data Enable)</span>, and <span class="highlight">DT/R (Data Transmit/Receive)</span> showing their active periods.</li>
+    </ul>
+</body>
+</html>
