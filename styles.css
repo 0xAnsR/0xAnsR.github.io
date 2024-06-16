@@ -323,8 +323,11 @@ footer {
     color: red;
     border: 2px solid rgb(240, 139, 7);
     border-radius: 2em;
-    width: fit-content;
-    height: fit-content;
+	    
+    width: 2px;
+    height: 2px;
+    /*width: fit-content;
+    height: fit-content;*/
     padding: 5px 5px 5px 5px;
     }
 
