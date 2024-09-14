@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reel URL Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .result a {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reel URL Generator</h1>
+        <p>Paste the HTML text containing the reel IDs below and click "Generate URLs" to create the formatted URLs.</p>
+        <textarea id="textInput" placeholder="Paste your HTML text here..."></textarea>
+        <button onclick="generateURLs()">Generate URLs</button>
+        <button onclick="copyURLs()">Copy All URLs</button>
+        <button onclick="copyCommands()">Copy yt-dlp Commands</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function extractReelIds(text) {
+            const regex = /\/reel\/(\d+)/g;
+            const matches = [];
+            let match;
+            while ((match = regex.exec(text)) !== null) {
+                matches.push(match[1]);
+            }
+            return matches;
+        }
+
+        function generateURLs() {
+            const textInput = document.getElementById('textInput').value;
+            const reelIds = extractReelIds(textInput);
+            const resultDiv = document.getElementById('result');
+            if (reelIds.length > 0) {
+                resultDiv.innerHTML = '<strong>Generated URLs:</strong><br>';
+                reelIds.forEach(id => {
+                    const url = `https://web.facebook.com/reel/${id}`;
+                    resultDiv.innerHTML += `<a href="${url}" target="_blank">${url}</a>`;
+                });
+            } else {
+                resultDiv.innerHTML = 'No reel IDs found.';
+            }
+        }
+
+        function copyURLs() {
+            const resultDiv = document.getElementById('result');
+            const urls = resultDiv.querySelectorAll('a');
+            if (urls.length > 0) {
+                const urlsText = Array.from(urls).map(a => a.href).join('\n');
+                navigator.clipboard.writeText(urlsText).then(() => {
+                    alert('URLs copied to clipboard!');
+                }).catch(err => {
+                    console.error('Failed to copy URLs: ', err);
+                });
+            } else {
+                alert('No URLs to copy.');
+            }
+        }
+
+        function copyCommands() {
+            const resultDiv = document.getElementById('result');
+            const urls = resultDiv.querySelectorAll('a');
+            if (urls.length > 0) {
+                const folderPath = '/reels';
+                const commandsText = Array.from(urls).map(a => `yt-dlp "${a.href}" -o "${folderPath}/%(title)s.%(ext)s"`).join('\n');
+                navigator.clipboard.writeText(commandsText).then(() => {
+                    alert('yt-dlp commands copied to clipboard!');
+                }).catch(err => {
+                    console.error('Failed to copy yt-dlp commands: ', err);
+                });
+            } else {
+                alert('No commands to copy.');
+            }
+        }
+    </script>
+</body>
+</html>
