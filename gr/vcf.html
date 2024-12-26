@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extract +92 Phone Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        #results {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Extract +92 Phone Numbers
+    <button onclick="window.location.href='https://0xansr.github.io/gr/g.html'">only text paste</button>
+   <button onclick="window.location.href='https://0xansr.github.io/gr/g2.html'">file upload</button>
+   <button onclick="window.location.href='https://0xansr.github.io/gr/vcf.html'">vcf</button>
+</h1> 
+
+<textarea id="inputText" placeholder="Paste your text here..."></textarea>
+<button onclick="extractPhoneNumbers()">Extract Phone Numbers</button>
+
+<input type="file" id="fileInput" accept=".txt" />
+<button onclick="loadFile()">Upload and Extract</button>
+
+<div id="results"></div>
+
+<!-- Buttons for downloading as CSV and VCF -->
+<button id="downloadCSV" style="display:none;" onclick="downloadCSV()">Download as CSV</button>
+<button id="downloadVCF" style="display:none;" onclick="downloadVCF()">Download as VCF</button>
+
+<script>
+    let extractedNumbers = []; // Array to store extracted phone numbers
+
+    function extractPhoneNumbers() {
+        const inputText = document.getElementById('inputText').value;
+        const pattern = /\+92\d{10}/g; // Regular expression to match +92 followed by 10 digits
+        const matches = inputText.match(pattern);
+        
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = ''; // Clear previous results
+        extractedNumbers = []; // Reset extracted numbers
+
+        if (matches) {
+            extractedNumbers = matches; // Store extracted numbers
+            resultsDiv.innerHTML = '<h3>Extracted Phone Numbers:</h3><ul>' + 
+                matches.map(number => `<li>${number}</li>`).join('') + 
+                '</ul>';
+            // Show download buttons
+            document.getElementById('downloadCSV').style.display = 'inline-block';
+            document.getElementById('downloadVCF').style.display = 'inline-block';
+        } else {
+            resultsDiv.innerHTML = '<p>No phone numbers found.</p>';
+            // Hide download buttons
+            document.getElementById('downloadCSV').style.display = 'none';
+            document.getElementById('downloadVCF').style.display = 'none';
+        }
+    }
+
+    function loadFile() {
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                document.getElementById('inputText').value = event.target.result;
+                extractPhoneNumbers(); // Automatically extract phone numbers after loading the file
+            };
+            reader.readAsText(file);
+        } else {
+            alert("Please select a file.");
+        }
+    }
+
+    function downloadCSV() {
+        const csvContent = "data:text/csv;charset=utf-8," + 
+            extractedNumbers.join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "phone_numbers.csv");
+        document.body.appendChild(link); // Required for Firefox
+        link.click();
+        document.body.removeChild(link); // Clean up
+    }
+
+    function downloadVCF() {
+        let vcfContent = "BEGIN:VCARD\nVERSION:3.0\n";
+        extractedNumbers.forEach(number => {
+            vcfContent += `TEL;TYPE=CELL:${number}\n`;
+        });
+        vcfContent += "END:VCARD";
+
+        const encodedUri = encodeURI("data:text/vcard;charset=utf-8," + vcfContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "phone_numbers.vcf");
+        document.body.appendChild(link); // Required for Firefox
+        link.click();
+        document.body.removeChild(link); // Clean up
+    }
+</script>
+
+</body>
+</html>
