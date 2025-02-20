@@ -3,21 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesseract.js Example</title>
-    <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+    <title>Tesseract.js Example with Image Upload</title>
+    <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
+    <style>
+        #output {
+            white-space: pre-wrap; /* Preserve whitespace */
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Tesseract.js OCR Example</h1>
+    <h1>Text Recognition with Tesseract.js</h1>
+    
+    <input type="file" id="imageInput" accept="image/*">
+    <button id="recognize">Recognize Text</button>
+    <pre id="output"></pre>
+
     <script>
-        (async () => {
-            const worker = await Tesseract.createWorker();
-            await worker.load();
-            await worker.loadLanguage('eng');
-            await worker.initialize('eng');
-            const { data: { text } } = await worker.recognize('https://tesseract.projectnaptha.com/img/eng_bw.png');
-            console.log(text);
-            await worker.terminate();
-        })();
+        document.getElementById('recognize').addEventListener('click', () => {
+            const outputElement = document.getElementById('output');
+            const imageInput = document.getElementById('imageInput');
+            const file = imageInput.files[0];
+
+            if (!file) {
+                outputElement.textContent = 'Please select an image file.';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const imgSrc = event.target.result;
+                outputElement.textContent = 'Recognizing...';
+
+                Tesseract.recognize(
+                    imgSrc,
+                    'eng',
+                    {
+                        logger: m => console.log(m) // Log progress
+                    }
+                ).then(({ data: { text } }) => {
+                    outputElement.textContent = text; // Display recognized text
+                }).catch(err => {
+                    outputElement.textContent = 'Error: ' + err.message;
+                });
+            };
+
+            reader.readAsDataURL(file); // Read the image file as a data URL
+        });
     </script>
 </body>
 </html>
