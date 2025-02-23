@@ -15,3 +15,22 @@ git add .
 
 # Push to the main branch
 git push origin main
+git add raw/
+If you want to add all untracked files and directories, you can use:
+
+bash
+Run
+Copy code
+git add .
+Commit the Changes: After adding the raw/ directory (or any other changes), you need to commit them:
+
+bash
+Run
+Copy code
+git commit -m "Add raw directory"
+Push Your Changes: Now that you have committed your changes, you can push both your local commits and the newly added raw/ directory to the remote repository:
+
+bash
+Run
+Copy code
+git push origin main
