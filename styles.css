@@ -1,0 +1,947 @@
+
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+/*--============== <<<   CSS    short Hand ==================--
+    color: white;
+
+    position:>  -Top -Right -Bottom  -left;
+    margin:    0px 0px   0px     0px ;
+    border:
+    padding:   0px 0px  15px     0px;
+    height:  inherit;
+    width:    100px;
+
+   --==============  CSS            Short Hand >>>  ==================--    */
+/*--============== Default CSS ==================--*/
+/*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}*/
+/*--============== Default CSS ==================--*/
+
+
+:root {
+	font-size: 20px;
+	--red: #da2c4d;
+	--yellow: #f8ab37;
+	--green: #2ecc71;
+	--white: #ffffff;
+	--grey-light: #f2f7f9;
+	--grey: #092cf3;
+	--black: #080808;
+	--black-blue: #1f2029;
+	--black-blue-light: #353746;
+	--black-blue-light-2: #404255;
+	--black-blue-light-3: #4b4d64;
+	--black-light: #424455;
+}
+
+
+
+body {
+
+	background-color: var(--black-blue);
+
+margin: -10px 0px 0px 0px; 
+}
+
+
+/*--============== Heading Left==================--*/
+.heading {
+    font-family: Impact, ;
+    font-size: 2em ;
+    margin: -10px 0px 0px 20px 
+
+}
+
+
+
+.logo {
+    
+    border: 0cm dotted rgb(230, 14, 14) ;
+    width: fit-content;
+    height: min-content;
+    padding: 5px 5px 5px 5px;
+    margin: 10px 0px 0px 100px ;
+}
+.logo_text {
+border: 0px dotted orange;
+    font-size: 2.5em;
+    color: rgb(10, 10, 10);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 5px 5px 5px 5px ;
+    letter-spacing: -8px;
+}
+
+
+
+<!--  /*=========== <<<  Progress Bar code   ===========*/ -->
+
+/*=========== <<< control the container & PositionS   ===========*/
+#mn {
+    background: rgb(19, 18, 18);
+    position: fixed;
+    top:    0px;
+    width: 100%;
+    height: 0px;
+    }
+
+.progress-container {
+
+    width: 100%;
+    height: 4px;
+    background: rgb(20, 20, 20);
+}
+.progress-bar {
+    height: 4px;
+    background: #F5011A;
+    width: 0%;
+}
+.cont3nt {
+    
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+.body-content {
+    padding: 100px 0;
+    margin: 50px auto 0 auto;
+    width: 80%;
+}
+  /*===========  Progress Bar code  >>>   ===========*/
+
+
+/*--============== Navgations ==================--*/
+
+#mnu {
+    background-color: white;
+    position: fixed;
+    top: 4px;
+    width: 100%;
+    height: 70px;
+    }
+   
+.navbar_holder {
+    border: 0cm solid rgb(225, 0, 255); 
+  /*  border-bottom: 10px solid rgb(79,185,227); */
+    color: white;
+/* postion is Always define in single property Top Right Left Bottom */
+    position: fixed;
+    top: 14px;
+    right: 5%;
+    right: none;
+     margin: 0px 0px 0px 0px ;
+    padding: 2px 0px 2px 0px;
+     width: fit-content ;
+
+  /* 
+    position: fixed; 
+   height: ;
+    width:  ; */
+    transition: all 0.3s cubic-bezier(0.4, 0, 1, 1);
+}
+
+
+
+/*--============== <<<  Buttons Holder  ==================--*/
+span {
+    border: 0px dotted green;
+    padding: 0px 0px 23px 0px;
+    margin: 2px;
+    border-bottom: 5px solid transparent;
+  }
+  
+ span:hover {
+        border-bottom: 5px solid red;
+}
+     
+/*--==============  Buttons Holder >>> ==================--*/
+
+
+/*--============== <<<  Buttons <a> href  ==================--*/
+span > a {
+    border-top: 3px solid rgb(8, 8, 8);
+    border-left:3px solid rgb(8, 8, 8) ;
+    /* For css growin stop */ 
+    border-right: 3px solid transparent;
+    border-bottom:3px solid  transparent;
+    
+    border-radius:  .24em ;
+    display: inline-block;
+     background: rgba(14, 106, 212, 0.945);
+    color: rgb(252, 251, 250);
+    font-size: 1em;
+    padding: 5px 5px 5px 5px;
+    margin: 0px 0px 0px 4px ;
+    transition: .1s;
+
+    /* For css growin stop */
+     border-right: 3px solid transparent;
+    border-bottom:3px solid  transparent;
+    
+}
+
+
+span  > 
+            a:link {
+    text-decoration: none;
+}
+span  > 
+            a:visited {
+
+    text-decoration: none;
+}
+
+span  > 
+            a:focus {
+                border-right: 3px solid rgb(8, 8, 8);
+
+    
+}
+span  > 
+            a:hover   {
+                
+    border-right: 3px solid rgb(8, 8, 8);
+    border-bottom:3px solid rgb(8, 8, 8) ;
+    border-top: 0px solid rgb(8, 8, 8);
+    border-left:0px solid rgb(8, 8, 8) ;
+   /** border: 2px dashed rgba(128, 128, 128, 0.404); **/
+}
+span  > 
+            a:active {
+    
+                border-right: 3px solid rgb(8, 8, 8);
+                border-bottom:3px solid rgb(8, 8, 8) ;
+                border-top: 0px solid rgb(8, 8, 8);
+                border-left:0px solid rgb(8, 8, 8) ;
+}
+
+.head{
+
+    direction: vertical l;
+}
+
+/*--============== <<<  Buttons <a> href  ==================--*/
+
+/*--==============  Buttons CSS >>> ==================--*/
+
+
+
+/*===========  >>>  Home   ===========*/
+
+.box {
+    float: right;
+    margin-right: 15px;
+    margin-top: 15px;
+    width:400px;
+    height: 400px;
+    border-radius: 2em;
+    background-color: rgb(207,232,220);
+    color: rgb(247, 243, 7);
+    padding: 0px 0px 0px 0px;
+    justify-content: center;
+  } 
+
+  .wrapper {
+    background-color: rgb(79,185,227);
+    padding: 10px;
+    border-radius: 20px;
+    color: #fff; 
+    overflow-block: hidden;
+    width: auto;
+    height: 480px;
+  }
+
+/*===========   Home >>>  ===========*/
+  
+.stky 
+        {
+    font-size: x-large;
+    background-color: rgba(26, 25, 24, 0.973);
+    color: white;
+    
+    border-left: 10px dashed yellow;
+    border-bottom: 10px dashed rgba(255, 0, 0, 0.007);
+    border-top: 20px solid rgba(255, 255, 0, 0);
+    border-right: 10px dashed yellow;
+    border-top-right-radius: 0em;
+    border-bottom-right-radius: 0em;
+    border-bottom-left-radius: 0em;
+    border-top-left-radius: 0em;
+    
+    padding:20px;
+    position: stick;
+    top: 0px;
+    left: 0;
+    margin: 0em 0;
+
+    box-shadow: rgb(230, 14, 14),0.6
+    ;
+}
+
+.bu
+ .card1 {
+    display: inline-block;
+    
+   background-color: blue;
+
+    width: 200px;
+    height: 300px;
+    padding: none  ;
+}
+
+h1 {
+font-size: 2em;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+color-scheme: light;
+
+
+
+}
+footer {
+    padding: 20px;
+    align-content: space-around;
+    margin-bottom: 0px;
+
+
+}
+
+/* Top Button */
+
+    .top {
+    background-color: white;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    color: red;
+    border: 2px solid rgb(240, 139, 7);
+    border-radius: 2em;
+	    
+    width: 20px;
+    height: 20px;
+    /*width: fit-content;
+    height: fit-content;*/
+    padding: 5px 5px 5px 5px;
+    }
+
+    
+/* Top Button
+       End        */
+img {
+justify-content: center;
+    width: 100%;
+    max-height: fit-content;
+    border-radius: 3rem;
+}
+#tip {
+    letter-spacing: 5px;
+}
+
+
+
+
+
+
+
+
+/* Please ❤ this if you like it! */
+
+/* #Progress
+================================================== */
+/* #Progress
+================================================== */
+/* #Progress
+================================================== */
+/* #Progress
+================================================== */
+/* #Progress rb 50px
+================================================== */
+
+.progress-wrap {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	height: 46px;
+	width: 46px;
+	cursor: pointer;
+	display: block;
+	border-radius: 50px;
+	box-shadow: inset  0 0 0 2px rgba(255,255,255,0.2);
+	z-index: 10000;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(15px);
+	-webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.progress-wrap.active-progress {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+.progress-wrap::after {
+	position: absolute;
+	font-family: 'unicons';
+
+    /* FOR ICON INSIDE THE Circul      
+<link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css'>
+
+*/
+	content: '^';
+	text-align: center;
+	line-height: 46px;
+	font-size: 24px;
+	color: var(--grey);
+	left: 0;
+	top: 0;
+	height: 46px;
+	width: 46px;
+	cursor: pointer;
+	display: block;
+	z-index: 1;
+	-webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.progress-wrap:hover::after {
+	opacity: 0;
+}
+.progress-wrap::before {
+	position: absolute;
+	font-family: 'unicons';
+     /* FOR ICON INSIDE THE Circul      
+<link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css'>
+
+*/ 
+	content: '^ ^';
+	text-align: center;
+	line-height: 46px;
+	font-size: 24px;
+	opacity: 0;
+	background-image: linear-gradient(298deg, var(--red), var(--yellow));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	left: 0;
+	top: 0;
+	height: 46px;
+	width: 46px;
+	cursor: pointer;
+	display: block;
+	z-index: 2;
+	-webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.progress-wrap:hover::before {
+	opacity: 1;
+}
+.progress-wrap svg path { 
+	fill: none; 
+}
+.progress-wrap svg.progress-circle path {
+	stroke: var(--grey);
+	stroke-width: 4;
+	box-sizing:border-box;
+	-webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+body.light .progress-wrap {
+	box-shadow: inset  0 0 0 2px rgba(0,0,0,0.2);
+}
+body.light .progress-wrap::after {
+	color: var(--black-blue);
+}
+body.light .progress-wrap svg.progress-circle path {
+	stroke: var(--black-blue);
+}
+
+
+
+/* #Progress
+================================================== */
+/* #Progress
+================================================== */
+/* #Progress
+================================================== */
+/* #Progress
+================================================== */
+
+/* #Progress
+================================================== */
+
+
+
+
+
+
+
+/* #FOOTER  FOOTER FOOTER FOOTER FOOTER FOOTER
+================================================== */
+/* #FOOTER  FOOTER FOOTER FOOTER FOOTER FOOTER
+================================================== */
+
+
+
+
+/*--==============  USED AS SOCIAL ICON MASK   USED AS SOCIAL ICON MASK   USED AS SOCIAL ICON MASK  >>> ==================--*/
+span {
+    border: 0px dotted green;
+    padding: 0px 0px 23px 0px;
+    margin: 2px;
+    border-bottom: 5px solid transparent;
+  }
+  
+ span:hover {
+        border-bottom: 5px solid red;
+}
+     
+
+
+
+
+/*--============== <<<<<<<<   Dark Light    Dark Light   Dark Light      ==================--*/
+
+
+
+
+.f_theme_container  {
+    border: 0cm dotted red;
+
+    border-radius: .5em;
+        background: rgba(14, 106, 212, 0);
+        position: fixed;
+        width: fit-content;
+         display: flex;
+flex-wrap: 1fr 1fr;
+        right:15%;
+        bottom: 90px;
+        cursor: pointer;
+        border-left: 0px solid  rgba(253, 32, 3, 0.945);
+        border-right: 0px solid  rgba(14, 106, 212, 0.945) ;
+
+}
+.f_dark  {
+    border-top: 3px solid rgb(8, 8, 8,0);
+    border-left:3px solid rgb(8, 8, 8,0) ;
+    
+    /* For css growin stop */ 
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid  transparent;
+    
+    border-top-left-radius:  .5em ;
+    border-top-right-radius: 0em;
+    border-bottom-left-radius: .5em;
+    border-bottom-right-radius: 0em; 
+
+    display: ;
+     background: rgba(12, 12, 12, 0.945);
+    color: rgb(252, 251, 250);
+    font-size: 1em;
+    padding: 5px 5px 5px 5px;
+    margin: 0px 0px 0px 0px ;
+    transition: .1s;
+
+    
+}
+.f_light {
+
+border: 0px dotted green;
+
+
+position: relative;
+left:0px;
+bottom: 0px;
+font-size: 1em;
+
+border-top: 1px solid rgb(8, 8, 8);
+border-left:0px solid rgb(8, 8, 8) ;
+/* For css growin stop */ 
+border-right: 3px solid transparent;
+border-bottom:3px solid  transparent;
+/*   Border-radius */ 
+border-bottom-right-radius: .5em;
+border-bottom-left-radius:  0em;
+border-top-right-radius:    .5em;
+border-top-left-radius:     0em;
+
+
+background: rgba(250, 249, 249, 0.945);
+color: rgb(8, 8, 8);
+
+padding: 5px 5px 5px 5px;
+margin: 0px 0px 0px 0px ;
+transition: .1s;
+}
+
+/*--==============  Dark Light    Dark Light   Dark Light   >>>>>>>>>>>     ==================--*/
+
+
+/*--============== <<<<<<<<<< Footer Copy RIGHT   ==================--*/
+
+.f_copyr8 {
+    border: 0cm dotted red;
+
+    border-radius: .5em;
+        background: rgba(14, 106, 212, 0);
+        position: fixed;
+        width: fit-content;
+        height: 60px;
+        right:5%;
+        padding: 2px 2px 2px 2px;
+        bottom: 5px;
+        cursor: pointer;
+        border-left: 0px solid  rgba(253, 32, 3, 0.945);
+        border-right: 0px solid  rgba(14, 106, 212, 0.945) ;
+
+}
+  
+/*--==============  Footer Copy RIGHT    >>>>>>>>  ==================--*/
+
+/*--============== Footer Credit  @Ans & DAte  ==================--*/
+
+
+footer {
+    background-color: #2ecc71;
+    position: static;
+    bottom: 0px;
+    height: 100px;
+}
+
+
+            .credit {
+            border: 0cm dotted red;
+
+            border-radius: .5em;
+                background: rgba(14, 106, 212, 0.945);
+                position: relative;
+                width: fit-content;
+                left:15px;
+                bottom: 15px;
+                cursor: pointer;
+                border-left: 3px solid  rgba(253, 32, 3, 0.945);
+                border-right: 3px solid  rgba(14, 106, 212, 0.945) ;
+
+}
+
+date {
+    
+ border: 0px dotted green;
+ 
+    display: grid ;
+    row-gap: 2PX;
+    position: relative;
+    left:0px;
+    bottom: 0px;
+    font-size: .8em;
+
+    border-top: 1px solid rgb(8, 8, 8);
+    border-left:0px solid rgb(8, 8, 8) ;
+     /* For css growin stop */ 
+    border-right: 3px solid transparent;
+    border-bottom:3px solid  transparent;
+     /*   Border-radius */ 
+    border-bottom-right-radius: .5em;
+    border-bottom-left-radius:  0em;
+    border-top-right-radius:    0em;
+
+
+    background: rgba(253, 32, 3, 0.945);
+    color: rgb(8, 8, 8);
+
+    padding: 5px 5px 5px 5px;
+    margin: 0px 0px 0px 0px ;
+    transition: .1s;
+}
+
+footer > .footer_main > .credit > a {
+    border-top: 3px solid rgb(8, 8, 8,0);
+    border-left:3px solid rgb(8, 8, 8,0) ;
+    
+    /* For css growin stop */ 
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid  transparent;
+    
+    border-top-left-radius:  .5em ;
+    border-top-right-radius: .5em;
+    border-bottom-left-radius: 1em;
+
+    display: inline-block;
+     background: rgba(14, 106, 212, 0.945);
+    color: rgb(252, 251, 250);
+    font-size: 1em;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px ;
+    transition: .1s;
+
+    
+}
+
+footer  > .footer_main > .credit >
+            a:link {
+    text-decoration: none;
+}
+footer  > .footer_main > .credit >
+            a:visited {
+
+    text-decoration: none;
+}
+
+footer  > .footer_main > .credit >
+            a:focus {
+                text-decoration: none;
+
+    
+}
+footer  > .footer_main > .credit >
+            a:hover   {
+
+                cursor: pointer;
+}
+footer  > .footer_main > .credit >
+            a:active {
+    
+                text-decoration: none;
+}
+
+
+/*--============== END END    Footer Credit  @Ans & DAte >>>>>>>>>>>>>>>>>>>>>>>>  ==================--*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*--============== <<<<<<<<<<<<<<<<<<<<     FOOTER SOCIAL ICONS == FOOTER SOCIAL ICONS == FOOTER SOCIAL ICONS  ==================--*/
+
+#fmnu {
+
+    
+    border: .1cm dotted rgb(225, 0, 255); 
+    background-color: rgba(255, 255, 255, 0);
+
+    display: inline-block ;
+    position: relative;
+    left: 10%;
+    bottom: -50px;
+    width: 50%;
+    height: 59px;
+    padding: 5px 5px 5px 5px;
+    }
+   
+.fnavbar_holder {
+    border: .1cm solid green; 
+  /*  border-bottom: 10px solid rgb(79,185,227); */
+    color: white;
+/* postion is Always define in single property Top Right Left Bottom */
+    position: absolute;
+    top: px;
+    right: ;
+    right: none;
+     margin: 0px 0px 0px 0px ;
+    padding: 2px 0px 2px 0px;
+     width: fit-content;
+     height: fit-content;
+
+  /* 
+    position: fixed; 
+   height: ;
+    width:  ; */
+    transition: all 0.3s cubic-bezier(0.4, 0, 1, 1);
+}
+
+
+
+/*--============== <<<  Buttons Holder  ==================--*/
+.fspan {
+    border: 0px dotted green;
+    padding: 0px 0px 23px 0px;
+    margin: 2px;
+    border-bottom: 5px solid transparent;
+  }
+  
+ .fspan:hover {
+        border-bottom: 5px solid red;
+}
+     
+/*--==============  Buttons Holder >>> ==================--*/
+
+
+/*--============== <<<   ICONS ICONS ICONS  Buttons <a> href  ==================--*/
+.fspan > a {
+    border-top: 3px solid rgb(8, 8, 8);
+    border-left:3px solid rgb(8, 8, 8) ;
+    /* For css growin stop */ 
+    border-right: 3px solid transparent;
+    border-bottom:3px solid  transparent;
+    
+    border-radius:  .24em ;
+    display: inline-block;
+     background: rgba(14, 106, 212, 0.945);
+    color: rgb(252, 251, 250);
+    font-size: 1.8em;
+    padding: 5px 5px 5px 5px;
+    margin: 0px 0px 0px 4px ;
+    transition: .1s;
+    
+}
+
+
+.fspan  > 
+            a:link {
+    text-decoration: none;
+}
+.fspan  > 
+            a:visited {
+
+    text-decoration: none;
+}
+
+.fspan  > 
+            a:focus {
+                border-right: 5px solid rgb(8, 8, 8);
+
+    
+}
+.fspan  > 
+            a:hover   {
+                
+    border-right: 3px solid rgb(8, 8, 8);
+    border-bottom:3px solid rgb(8, 8, 8) ;
+    border-top: 3px solid transparent;
+    border-left:3px solid transparent ;
+   /** border: 2px dashed rgba(128, 128, 128, 0.404); **/
+   mask: var(--green);
+}
+.fspan  > 
+            a:active {
+    
+                border-right: 3px solid rgb(8, 8, 8);
+                border-bottom:3px solid rgb(8, 8, 8) ;
+                border-top: 0px solid rgb(8, 8, 8);
+                border-left:0px solid rgb(8, 8, 8) ;
+}
+
+
+/*--============== <<<<<<<<<<<<<<<<<<<<     Hover    icons icons data   https://codepen.io/Ans-Raza-MrHD3/pen/BaMVdLQ ==================--*/
+
+
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+ /* * {
+  padding: 0px;
+  margin: 0px;
+} 
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #00071C;
+}  */
+ ul {
+   position: relative;
+   display: flex;
+   transform: rotate(0deg)  skew(0deg);
+   transform-style: preserve-3d;
+}
+ul li {
+  position: relative;
+  list-style: none;
+  width: 15px;
+  height: 15px;
+  margin: 0px 20px 20px 20px ;
+}
+
+
+
+/*   un used code */
+ul li:befor3{
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: -5px;
+  width: 100%;
+  height: 10px;
+  background: #2a2a2a;
+  trnasform-origin: top;
+  transform: skewX(-41deg);
+}
+ul li:aft3r{
+  content: '';
+  position: absolute;
+  top:5px;
+  left: -9px;
+  width: 9px;
+  height: 100%;
+  background: #2a2a2a;
+  trnasform-origin: right;
+  transform: skewY(-49deg);
+}
+
+/*   un used code */
+
+
+ul li span{
+  position: absolute;
+  top: 0;
+  lef: 0;
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  background: #2a2a2a;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 30px !important;
+  transition: 1.5s ease-out;
+}
+ul li:hover span {
+  z-index: 1000;
+  transition: .3s;
+  color: #fff;
+  box-shadw: -1px 1px 1px rgba(0, 0, 0, .5);
+}
+ul li:hover span:nth-child(5) {
+  transform: translate(40px, -40px);
+  opacity: 1;
+}
+ul li:hover span:nth-child(4){
+  transform: translate(30px, -30px);
+  opacity: .8;
+}
+ul li:hover span:nth-child(3){
+  transform: translate(20px, -20px);
+  opacity: .6;
+}
+ul li:hover span:nth-child(2){
+  transform: translate(10px, -10px);
+  opacity: .4;
+}ul li:hover span:nth-child(1){
+  transform: translate(0px, 0px);
+  opacity: .2;
+}
+ul li:nth-child(1):hover span{
+  background: #52E19F !important;
+}
+ul li:nth-child(2):hover span{
+  background: #2C3456 !important;
+}
+ul li:nth-child(3):hover span{
+  background: #EA6E96 !important;
+}
+ul li:nth-child(4):hover span{
+  background: #FCEB00 !important;
+}
+
+
+/*--==============    FOOTER SOCIAL ICONS == FOOTER SOCIAL ICONS == FOOTER SOCIAL ICONS   >>>>>>>>>>>>>>>>>>>>>>  ==================--*/
