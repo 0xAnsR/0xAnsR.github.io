@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Azure ML Designer Component Index</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; color: #333; }
+        .module-category { margin-bottom: 30px; border-left: 4px solid #0078D4; padding-left: 15px; }
+        h2 { color: #0078D4; text-transform: uppercase; font-size: 1.2rem; }
+        .index-list { list-style-type: none; padding: 0; }
+        .index-item { padding: 5px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+        .count-badge { background: #e1f0fe; color: #0078D4; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; }
+        .deprecated { color: #a4262c; font-style: italic; }
+        code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <h1>Technical Index: Azure ML Designer Components</h1>
+    <p><strong>Ref:</strong> Pipeline-Created-on-12-10-2025 | by Ans 
+      Raza <strong>Last Registry Sync:</strong> 03/24/2025</p>
+
+    <hr>
+  <nav aria-label="Reference Path" style="display: flex; flex-direction: column; gap: 8px; font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 13px; background: #fdfdfd; padding: 12px; border: 1px solid #e1e4e8; border-radius: 4px;">
+  
+  <div style="display: flex; align-items: center; white-space: nowrap; color: #57606a;">
+    <span style="color: #0078d4; font-weight: 700;">Microsoft Foundry</span>
+    <span style="margin: 0 10px; color: #d1d5da;">|</span>
+    <span>Azure Machine Learning</span>
+    <span style="margin: 0 8px; color: #959da5;">&gt;</span>
+    <span>Default Directory</span>
+    <span style="margin: 0 8px; color: #959da5;">&gt;</span>
+    <span style="color: #0078d4;">AiGct</span>
+    <span style="margin: 0 8px; color: #959da5;">&gt;</span>
+    <span>Designer</span>
+    <span style="margin: 0 8px; color: #959da5;">&gt;</span>
+    <strong style="color: #24292e;">Authoring</strong>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 8px;">
+    <span style="font-size: 11px; text-transform: uppercase; color: #959da5; font-weight: bold; letter-spacing: 0.5px;">Ref URL:</span>
+    <code style="background: #f1f8ff; color: #0366d6; padding: 2px 6px; border-radius: 3px; border: 1px solid #c8e1ff;">
+      <a href="https://ml.azure.com/visualinterface/authoring/Normal" style="color: inherit; text-decoration: none;">https://ml.azure.com/visualinterface/authoring/Normal</a>
+    </code>
+  </div>
+
+</nav>
+<hr>
+    <section class="module-category">
+        <h2>01. Classification Algorithms <span class="count-badge">12</span></h2>
+        <ul class="index-list">
+            <li class="index-item">3.01 Multiclass Boosted Decision Tree</li>
+            <li class="index-item">3.02 Multiclass Decision Forest</li>
+            <li class="index-item">3.03 Multiclass Logistic Regression</li>
+            <li class="index-item">3.04 Multiclass Neural Network</li>
+            <li class="index-item">3.05 One-vs-All Multiclass (Ensemble Wrapper)</li>
+            <li class="index-item">3.06 One-vs-One Multiclass (Ensemble Wrapper)</li>
+            <li class="index-item">3.07 Two-Class Averaged Perceptron</li>
+            <li class="index-item">3.08 Two-Class Boosted Decision Tree</li>
+            <li class="index-item">3.09 Two-Class Decision Forest</li>
+            <li class="index-item">3.10 Two-Class Logistic Regression</li>
+            <li class="index-item">3.11 Two-Class Neural Network</li>
+            <li class="index-item">3.12 Two-Class Support Vector Machine (SVM)</li>
+        </ul>
+    </section>
+
+    <section class="module-category">
+        <h2>02. Regression Analysis <span class="count-badge">6</span></h2>
+        <ul class="index-list">
+            <li class="index-item">1.01 Boosted Decision Tree Regression</li>
+            <li class="index-item">1.02 Decision Forest Regression</li>
+            <li class="index-item">1.03 Fast Forest Quantile Regression</li>
+            <li class="index-item">1.04 Linear Regression</li>
+            <li class="index-item">1.05 Neural Network Regression</li>
+            <li class="index-item">1.06 Poisson Regression <span class="deprecated">[DEPRECATED]</span></li>
+        </ul>
+    </section>
+
+    <section class="module-category">
+        <h2>03. Specialized Analysis & Extensibility</h2>
+        <ul class="index-list">
+            <li class="index-item">Text Analytics (NLP Suite) <span class="count-badge">7</span></li>
+            <li class="index-item">Computer Vision (Image Featurization) <span class="count-badge">6</span></li>
+            <li class="index-item">Recommendation (SVD/Ranking) <span class="count-badge">5</span></li>
+            <li class="index-item">Anomaly Detection (PCA/Isolation) <span class="count-badge">2</span></li>
+            <li class="index-item">K-Means Clustering <span class="count-badge">1</span></li>
+        </ul>
+    </section>
+
+    <section class="module-category">
+        <h2>04. Custom Code & ETL</h2>
+        <ul class="index-list">
+            <li class="index-item"><code>Execute Python Script</code> (v3.x Optimized) <span class="count-badge">2</span></li>
+            <li class="index-item"><code>Execute R Script</code> (CRAN Compatible) <span class="count-badge">1</span></li>
+            <li class="index-item">Data Input and Output (SQL/Blob/Web) <span class="count-badge">3</span></li>
+            <li class="index-item">Feature Selection (Filter-based) <span class="count-badge">2</span></li>
+        </ul>
+    </section>
+
+    <section class="module-category">
+        <h2>05. Graph Orchestration</h2>
+        <ul class="index-list">
+            <li class="index-item">Model Training & Hyperparameter Tuning <span class="count-badge">4</span></li>
+            <li class="index-item">Model Scoring & Evaluation Metrics <span class="count-badge">6</span></li>
+            <li class="index-item">Web Service Gateway (Request/Response) <span class="count-badge">2</span></li>
+        </ul>
+    </section>
+
+</body>
+</html>
