@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-900: Professional Analysis & Summary Report</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: auto; padding: 20px; background-color: #f4f7f9; }
+        header { background: #0078d4; color: white; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 30px; }
+        h2 { border-left: 5px solid #0078d4; padding-left: 10px; color: #004578; margin-top: 40px; }
+        .term-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #00bcf2; }
+        .term-title { font-weight: bold; color: #0078d4; font-size: 1.1em; display: block; margin-bottom: 5px; }
+        .reasoning { background: #e1f0fe; padding: 10px; border-radius: 4px; font-style: italic; font-size: 0.95em; margin-top: 10px; display: block; }
+        .category-label { font-size: 0.8em; text-transform: uppercase; color: #666; font-weight: bold; }
+        hr { border: 0; height: 1px; background: #ddd; margin: 40px 0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Microsoft Azure AI Fundamentals (AI-900)</h1>
+    <p>Comprehensive Exam Analysis Report | Project iq 9900</p>
+</header>
+
+<section id="principles">
+    <h2>1. Responsible AI Principles</h2>
+    <p>Microsoft’s ethical framework for developing AI that users can trust.</p>
+
+    <div class="term-card">
+        <span class="category-label">Principle</span>
+        <span class="term-title">Transparency</span>
+        <p>Providing documentation and "explainability" for AI models so users understand how decisions are made.</p>
+        <span class="reasoning"><strong>Exam Context:</strong> Selecting "Enable Explain Best Model" in Azure ML satisfies this principle by making the "black box" of AI understandable.</span>
+    </div>
+
+    <div class="term-card">
+        <span class="category-label">Principle</span>
+        <span class="term-title">Inclusiveness</span>
+        <p>Ensuring AI systems empower and engage everyone, regardless of physical ability, gender, or ethnicity.</p>
+        <span class="reasoning"><strong>Exam Context:</strong> Identifying barriers in voice recognition for users with speech impairments is an act of supporting Inclusiveness.</span>
+    </div>
+</section>
+
+<section id="machine-learning">
+    <h2>2. Machine Learning Fundamentals</h2>
+    <p>Core concepts used to build and evaluate predictive models.</p>
+    
+    
+
+    <div class="term-card">
+        <span class="category-label">Concept</span>
+        <span class="term-title">Regression vs. Classification</span>
+        <p><strong>Regression</strong> predicts a continuous numerical value. <strong>Classification</strong> predicts a discrete label or category.</p>
+        <span class="reasoning"><strong>Exam Context:</strong> Predicting a taxi fare ($) is Regression; determining if a review is "Positive" or "Negative" is Classification.</span>
+    </div>
+
+    <div class="term-card">
+        <span class="category-label">Metric</span>
+        <span class="term-title">Confusion Matrix (TP, FP, TN, FN)</span>
+        <p>A tool to judge the accuracy of a classification model by cross-referencing predicted outcomes against actual reality.</p>
+        
+        <span class="reasoning"><strong>Exam Context:</strong> A False Negative (FN) occurs when the system fails to detect a target that was actually present.</span>
+    </div>
+</section>
+
+<section id="computer-vision">
+    <h2>3. Computer Vision Services</h2>
+    <p>Allowing software to see, identify, and process visual information.</p>
+
+    <div class="term-card">
+        <span class="category-label">Service</span>
+        <span class="term-title">Object Detection</span>
+        <p>A step beyond classification; it identifies individual items in an image and provides their exact coordinates (bounding boxes).</p>
+        [Image showing the difference between image classification, object detection, and image segmentation]
+        <span class="reasoning"><strong>Exam Context:</strong> Use Object Detection to "identify the location of a damaged part" in a photo.</span>
+    </div>
+
+    <div class="term-card">
+        <span class="category-label">Service</span>
+        <span class="term-title">Optical Character Recognition (OCR)</span>
+        <p>The extraction of text from images, such as street signs, hand-written notes, or scanned PDFs.</p>
+        <span class="reasoning"><strong>Exam Context:</strong> Form Recognizer uses OCR to extract data from invoices and turn them into structured database entries.</span>
+    </div>
+</section>
+
+<section id="nlp">
+    <h2>4. Natural Language Processing (NLP)</h2>
+    <p>Enabling computers to interpret, transcribe, and respond to human language.</p>
+
+    <div class="term-card">
+        <span class="category-label">Service</span>
+        <span class="term-title">Named Entity Recognition (NER)</span>
+        <p>The ability to identify and categorize key elements in text like names, dates, organizations, and locations.</p>
+        <span class="reasoning"><strong>Exam Context:</strong> Identifying a "phone number" or "address" within a body of email text is a function of NER.</span>
+    </div>
+
+    <div class="term-card">
+        <span class="category-label">Service</span>
+        <span class="term-title">Sentiment Analysis</span>
+        <p>Analyzing text to determine if the tone is positive, negative, or neutral.</p>
+        <span class="reasoning"><strong>Exam Context:</strong> A chatbot uses this to detect if a customer is becoming "upset" so it can escalate the chat to a human agent.</span>
+    </div>
+</section>
+
+<footer>
+    <hr>
+    <p style="text-align: center; color: #888; font-size: 0.9em;">
+        &copy; 2026 AI-900 Study Resource | Prepared for Project iq 9900
+    </p>
+</footer>
+
+</body>
+</html>
