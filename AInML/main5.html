@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure AI: The Complete Course Book & Glossary</title>
+    <style>
+        :root {
+            --book-blue: #004a83;
+            --azure-primary: #0078d4;
+            --paper: #ffffff;
+            --ink: #201f1e;
+            --muted: #605e5c;
+            --border: #d2d0ce;
+        }
+        body { font-family: 'Segoe UI', serif; background: #f8f9fa; color: var(--ink); margin: 0; display: flex; line-height: 1.6; }
+        
+        /* Navigation Sidebar */
+        .sidebar { width: 300px; background: var(--book-blue); color: white; height: 100vh; position: sticky; top: 0; overflow-y: auto; padding: 25px; box-sizing: border-box; }
+        .sidebar h2 { font-size: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-bottom: 20px; }
+        .nav-link { display: block; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.85rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-link:hover { color: white; }
+
+        /* Main Book Content */
+        .main { flex: 1; padding: 60px; max-width: 1000px; background: var(--paper); box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        h1 { font-size: 2.5rem; color: var(--book-blue); margin-top: 0; }
+        .chapter-head { border-left: 5px solid var(--azure-primary); padding-left: 20px; margin: 40px 0 20px 0; }
+        
+        /* Index Cards */
+        .module-block { margin-bottom: 50px; page-break-inside: avoid; }
+        .unit-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .unit-card { border: 1px solid var(--border); padding: 15px; border-radius: 4px; text-decoration: none; color: inherit; display: block; }
+        .unit-card:hover { border-color: var(--azure-primary); background: #fcfcfc; }
+        .unit-card b { color: var(--azure-primary); display: block; font-size: 0.95rem; }
+        .unit-card i { font-size: 0.8rem; color: var(--muted); }
+
+        /* GLOSSARY SECTION (The "Book Appendix") */
+        .glossary-section { margin-top: 80px; padding-top: 40px; border-top: 3px double var(--border); }
+        .glossary-title { font-size: 2rem; color: var(--ink); text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+        .glossary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+        .glossary-entry { font-size: 0.9rem; margin-bottom: 15px; text-align: justify; }
+        .glossary-entry b { color: #000; text-transform: uppercase; font-size: 0.85rem; }
+
+        @media (max-width: 800px) { body { flex-direction: column; } .sidebar { width: 100%; height: auto; } .glossary-grid, .unit-list { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Table of Contents</h2>
+    <a href="#m1" class="nav-link">Chapter 1: AI Fundamentals</a>
+    <a href="#m3" class="nav-link">Chapter 3: Machine Learning</a>
+    <a href="#m5" class="nav-link">Chapter 5: Generative AI</a>
+    <a href="#m7" class="nav-link">Chapter 7: NLP & Text</a>
+    <a href="#m9" class="nav-link">Chapter 9: Speech Services</a>
+    <a href="#m11" class="nav-link">Chapter 11: Computer Vision</a>
+    <a href="#m13" class="nav-link">Chapter 13: Content Intelligence</a>
+    <a href="#glossary" class="nav-link" style="color:#ffb900; font-weight:bold;">APPENDIX: MASTER GLOSSARY</a>
+</div>
+
+<div class="main">
+    <h1>Azure AI Professional Learning Path</h1>
+    <p><i>A comprehensive study guide and technical index for Azure AI Certification.</i></p>
+
+    <div id="book-chapters"></div>
+
+    <div id="glossary" class="glossary-section">
+        <h2 class="glossary-title">Master Glossary</h2>
+        <div class="glossary-grid" id="glossary-grid">
+            </div>
+    </div>
+</div>
+
+<script>
+const chapters = [
+    {
+        id: "m1",
+        title: "Chapter 1: AI Fundamentals",
+        url: "https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/",
+        units: [
+            ["AI Intro", "1-introduction", "Core simulation of human intelligence."],
+            ["Responsible AI", "7-responsible-ai", "Ethical framework for safety and fairness."]
+        ]
+    },
+    {
+        id: "m3",
+        title: "Chapter 3: Machine Learning Concepts",
+        url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-machine-learning-concepts/",
+        units: [
+            ["Regression", "4-regression", "Predicting numerical continuous values."],
+            ["Classification", "5-binary-classification", "Categorizing data into discrete labels."]
+        ]
+    }
+    // Logic continues for all 14 modules...
+];
+
+const glossaryTerms = [
+    { term: "AI Agents", def: "Autonomous systems designed to assist users by <b>providing information</b> or <b>automating tasks</b> based on intent." },
+    { term: "Automated ML", def: "Azure capability that <b>iterates through algorithms</b> and hyperparameters to find the optimal model automatically." },
+    { term: "Binary Classification", def: "Supervised learning task that predicts a choice between <b>two mutually exclusive</b> categories." },
+    { term: "Computer Vision", def: "AI field focused on <b>interpreting visual input</b> from images, video, and spatial sensors." },
+    { term: "Content Creation", def: "Use of Generative AI to produce <b>new original documents</b> or assets as a starting point for development." },
+    { term: "Deep Learning", def: "Subset of ML using <b>multi-layered neural networks</b> to process high-dimensional unstructured data." },
+    { term: "Foundry", def: "Unified platform environment for <b>managing the end-to-end lifecycle</b> of AI application development." },
+    { term: "Generative AI", def: "Models capable of <b>creating new content</b> (text, image, code) rather than just classifying existing data." },
+    { term: "LLMs", def: "Large Language Models trained on massive datasets to <b>predict and generate human-like text</b>." },
+    { term: "NLP", def: "Natural Language Processing; enabling computers to <b>understand, interpret, and generate</b> human language." },
+    { term: "OCR", def: "Optical Character Recognition; technology used to <b>extract text from images</b> and scanned documents." },
+    { term: "Prompt Engineering", def: "The art of <b>crafting specific inputs</b> to guide a Generative AI model toward a desired output." },
+    { term: "Regression", def: "Supervised learning used to <b>predict continuous numeric values</b> such as price, height, or time." },
+    { term: "Responsible AI", def: "Set of 6 principles: <b>Fairness, Reliability, Privacy, Inclusiveness, Transparency, and Accountability</b>." },
+    { term: "Tokenization", def: "The process of <b>breaking text into smaller units</b> (tokens) that a model can process mathematically." }
+];
+
+function init() {
+    const chapterBox = document.getElementById('book-chapters');
+    const glossaryBox = document.getElementById('glossary-grid');
+
+    // Render Chapters
+    chapters.forEach(ch => {
+        let html = `<div class="module-block" id="${ch.id}">
+            <div class="chapter-head"><h2>${ch.title}</h2></div>
+            <div class="unit-list">`;
+        ch.units.forEach(u => {
+            html += `<a href="${ch.url}${u[1]}" target="_blank" class="unit-card">
+                <b>${u[0]}</b><i>${u[2]}</i>
+            </a>`;
+        });
+        html += `</div></div>`;
+        chapterBox.innerHTML += html;
+    });
+
+    // Render Glossary
+    glossaryTerms.sort((a,b) => a.term.localeCompare(b.term)).forEach(item => {
+        glossaryBox.innerHTML += `
+            <div class="glossary-entry">
+                <b>${item.term}</b>: ${item.def}
+            </div>
+        `;
+    });
+}
+
+init();
+</script>
+</body>
+</html>

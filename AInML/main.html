@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure AI Path - 14 Modules Index</title>
+    <style>
+        :root {
+            --primary: #0078d4;
+            --bg: #f3f2f1;
+            --card: #ffffff;
+            --text: #323130;
+            --border: #edebe9;
+            --success: #107c10;
+        }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; }
+        
+        /* Sidebar Navigation */
+        .sidebar { width: 300px; background: #faf9f8; height: 100vh; border-right: 1px solid var(--border); position: sticky; top: 0; overflow-y: auto; padding: 20px; box-sizing: border-box; }
+        .sidebar h2 { font-size: 18px; color: var(--primary); margin-bottom: 20px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        .nav-link { display: block; padding: 12px; color: var(--text); text-decoration: none; font-size: 13.5px; border-radius: 4px; margin-bottom: 4px; border-left: 3px solid transparent; }
+        .nav-link:hover { background: #f3f2f1; border-left: 3px solid var(--primary); color: var(--primary); }
+
+        /* Main Content */
+        .main { flex: 1; padding: 40px; }
+        .header { margin-bottom: 40px; background: var(--primary); color: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .header h1 { margin: 0; font-size: 28px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+        
+        /* Module Cards */
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-color: var(--primary); }
+        
+        .badge { position: absolute; top: 15px; right: 15px; background: #dff6dd; color: var(--success); padding: 4px 10px; font-size: 11px; font-weight: 700; border-radius: 20px; }
+        .card h3 { margin: 10px 0 15px 0; font-size: 17px; line-height: 1.4; padding-right: 60px; }
+        .card h3 a { color: var(--primary); text-decoration: none; }
+        .card h3 a:hover { text-decoration: underline; }
+        
+        .meta { font-size: 13px; color: #605e5c; display: flex; gap: 15px; margin-bottom: 15px; font-weight: 500; }
+        
+        .unit-list { margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border); list-style: none; padding-left: 0; font-size: 13px; }
+        li { margin-bottom: 10px; display: flex; align-items: flex-start; }
+        li::before { content: '→'; margin-right: 8px; color: var(--primary); font-weight: bold; }
+        .unit-link { color: #323130; text-decoration: none; }
+        .unit-link:hover { color: var(--primary); }
+
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Course Index</h2>
+    <nav>
+        <a href="#m1" class="nav-link">1. AI Concepts Overview</a>
+        <a href="#m2" class="nav-link">2. Microsoft Foundry Setup</a>
+        <a href="#m3" class="nav-link">3. ML Foundations</a>
+        <a href="#m4" class="nav-link">4. ML on Azure Portal</a>
+        <a href="#m5" class="nav-link">5. GenAI & Agents Intro</a>
+        <a href="#m6" class="nav-link">6. GenAI in Foundry</a>
+        <a href="#m7" class="nav-link">7. Text Analysis Concepts</a>
+        <a href="#m8" class="nav-link">8. Text Analysis in Foundry</a>
+        <a href="#m9" class="nav-link">9. Speech Concepts</a>
+        <a href="#m10" class="nav-link">10. Speech in Foundry</a>
+        <a href="#m11" class="nav-link">11. Computer Vision Concepts</a>
+        <a href="#m12" class="nav-link">12. Vision in Foundry</a>
+        <a href="#m13" class="nav-link">13. Information Extraction</a>
+        <a href="#m14" class="nav-link">14. Extraction in Foundry</a>
+    </nav>
+</div>
+
+<div class="main">
+    <div class="header">
+        <h1>Introduction to AI in Azure</h1>
+        <p>Dashboard: 14 Modules • 11 hr 9 min • Interactive Index</p>
+    </div>
+
+    <div class="grid">
+        <div class="card" id="m1">
+            <span class="badge">1100 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/" target="_blank">1. Overview of AI Concepts</a></h3>
+            <div class="meta"><span>40 min</span><span>10 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/2-generative-ai/" target="_blank">Generative AI & Agents</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/7-responsible-ai/" target="_blank">Responsible AI</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m2">
+            <span class="badge">1000 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/get-started-foundry/" target="_blank">2. Get started in Microsoft Foundry</a></h3>
+            <div class="meta"><span>50 min</span><span>9 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-foundry/4-microsoft-foundry-ai/" target="_blank">Foundry Infrastructure</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-foundry/7-exercise-get-started-foundry/" target="_blank">Lab: Set up Foundry</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m3">
+            <span class="badge">1200 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/introduction-to-machine-learning-concepts/" target="_blank">3. Intro to ML Concepts</a></h3>
+            <div class="meta"><span>1h 33m</span><span>11 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-machine-learning-concepts/4-regression/" target="_blank">Regression & Classification</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-machine-learning-concepts/8-deep-learning/" target="_blank">Deep Learning basics</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m4">
+            <span class="badge">1000 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/get-started-machine-learning-azure/" target="_blank">4. ML in Azure Studio</a></h3>
+            <div class="meta"><span>1h 06m</span><span>9 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-machine-learning-azure/5-azure-machine-learning-studio/" target="_blank">Azure ML Studio UI</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-machine-learning-azure/7-exercise-automated-machine-learning/" target="_blank">AutoML Exercise</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m5">
+            <span class="badge">800 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/introduction-to-generative-ai/" target="_blank">5. GenAI and Agents Intro</a></h3>
+            <div class="meta"><span>37 min</span><span>7 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-generative-ai/2-large-language-models/" target="_blank">Understanding LLMs</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-generative-ai/4-ai-agents/" target="_blank">Intro to AI Agents</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m6">
+            <span class="badge">1000 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/get-started-generative-ai-foundry/" target="_blank">6. GenAI in Foundry Tools</a></h3>
+            <div class="meta"><span>1h 07m</span><span>9 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-generative-ai-foundry/4-foundry-model-catalog/" target="_blank">The Model Catalog</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-generative-ai-foundry/7-exercise-generative-ai-foundry/" target="_blank">Lab: Build GenAI App</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m7">
+            <span class="badge">800 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/introduction-to-text-analysis/" target="_blank">7. Text Analysis Concepts</a></h3>
+            <div class="meta"><span>30 min</span><span>7 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-text-analysis/2-tokenization/" target="_blank">Tokenization basics</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-text-analysis/4-semantic-language-models/" target="_blank">Semantic Models</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m8">
+            <span class="badge">1000 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/get-started-text-analysis-foundry/" target="_blank">8. Text Analysis on Azure</a></h3>
+            <div class="meta"><span>45 min</span><span>9 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-text-analysis-foundry/3-text-analysis-capabilities/" target="_blank">Language Service Tools</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-text-analysis-foundry/7-exercise-text-analysis-foundry/" target="_blank">Lab: NLP in Foundry</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m9">
+            <span class="badge">800 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/introduction-to-speech/" target="_blank">9. Speech Concepts</a></h3>
+            <div class="meta"><span>28 min</span><span>7 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-speech/3-speech-recognition/" target="_blank">Speech Recognition</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-speech/4-speech-synthesis/" target="_blank">Voice Synthesis</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m10">
+            <span class="badge">800 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/get-started-speech-foundry/" target="_blank">10. Azure Speech Tools</a></h3>
+            <div class="meta"><span>41 min</span><span>7 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-speech-foundry/4-use-azure-speech/" target="_blank">Azure Speech API</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-speech-foundry/5-exercise-speech-foundry/" target="_blank">Lab: Voice Integration</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m11">
+            <span class="badge">1000 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/introduction-to-computer-vision/" target="_blank">11. Computer Vision Intro</a></h3>
+            <div class="meta"><span>34 min</span><span>9 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-computer-vision/4-convolutional-neural-networks/" target="_blank">How CNNs work</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-computer-vision/6-image-generation/" target="_blank">DALL-E & Generation</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m12">
+            <span class="badge">900 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/get-started-computer-vision-foundry/" target="_blank">12. Azure Vision Tools</a></h3>
+            <div class="meta"><span>50 min</span><span>8 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-computer-vision-foundry/3-image-analysis-capabilities/" target="_blank">Image Analysis API</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-computer-vision-foundry/6-exercise-computer-vision-foundry/" target="_blank">Lab: Object Detection</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m13">
+            <span class="badge">800 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/introduction-to-content-understanding/" target="_blank">13. Info Extraction Concepts</a></h3>
+            <div class="meta"><span>28 min</span><span>7 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-content-understanding/3-optical-character-recognition/" target="_blank">Understanding OCR</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-content-understanding/4-field-extraction-mapping/" target="_blank">Form Mapping</a></li>
+            </ul>
+        </div>
+
+        <div class="card" id="m14">
+            <span class="badge">1000 XP</span>
+            <h3><a href="https://learn.microsoft.com/en-us/training/modules/get-started-content-understanding-foundry/" target="_blank">14. Knowledge Mining Tools</a></h3>
+            <div class="meta"><span>1h 00m</span><span>9 Units</span></div>
+            <ul class="unit-list">
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-content-understanding-foundry/5-extract-azure-document-intelligence/" target="_blank">Document Intelligence</a></li>
+                <li><a class="unit-link" href="https://learn.microsoft.com/en-us/training/modules/get-started-content-understanding-foundry/6-azure-ai-search/" target="_blank">AI Search & Indexing</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

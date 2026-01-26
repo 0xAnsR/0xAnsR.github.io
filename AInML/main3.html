@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure AI Master Index - Doctoral Revision Edition</title>
+    <style>
+        :root {
+            --primary: #0078d4;
+            --bg: #f3f2f1;
+            --card: #ffffff;
+            --text: #323130;
+            --border: #edebe9;
+            --accent: #005a9e;
+            --concept: #605e5c;
+        }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; scroll-behavior: smooth; }
+        
+        /* Sidebar */
+        .sidebar { width: 320px; background: #fff; height: 100vh; border-right: 1px solid var(--border); position: sticky; top: 0; overflow-y: auto; padding: 20px; box-sizing: border-box; }
+        .sidebar h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #605e5c; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .nav-link { display: block; padding: 8px 12px; color: var(--text); text-decoration: none; font-size: 12px; border-radius: 4px; margin-bottom: 2px; line-height: 1.4; }
+        .nav-link:hover { background: #f3f2f1; color: var(--primary); }
+
+        /* Main Content */
+        .main { flex: 1; padding: 40px; max-width: 1400px; }
+        .header-section { margin-bottom: 30px; }
+        .search-box { width: 100%; padding: 15px; border: 2px solid var(--primary); border-radius: 8px; font-size: 16px; margin-bottom: 30px; box-sizing: border-box; outline: none; }
+        
+        .module-container { background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .module-header { background: #faf9f8; padding: 20px 25px; border-bottom: 1px solid var(--border); }
+        .module-header h2 { margin: 0; font-size: 20px; }
+        .module-header h2 a { color: var(--primary); text-decoration: none; }
+        .module-meta { font-size: 13px; color: #605e5c; margin-top: 5px; font-weight: 600; }
+
+        .unit-grid { padding: 20px 25px; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 15px; }
+        .unit-item { background: #fff; border: 1px solid #f3f2f1; padding: 15px; border-radius: 6px; display: flex; flex-direction: column; text-decoration: none; color: var(--text); transition: all 0.2s; position: relative; }
+        .unit-item:hover { border-color: var(--primary); background: #f0f7ff; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        
+        .unit-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .unit-title { font-weight: 600; font-size: 14px; color: var(--primary); }
+        .unit-time { font-size: 10px; background: #eee; padding: 2px 8px; border-radius: 10px; color: #333; }
+        .unit-concept { font-size: 12px; color: var(--concept); font-style: italic; line-height: 1.4; border-left: 2px solid #ddd; padding-left: 10px; }
+
+        @media (max-width: 1000px) { body { flex-direction: column; } .sidebar { width: 100%; height: auto; position: static; } }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Course Roadmap</h2>
+    <nav id="module-nav"></nav>
+</div>
+
+<div class="main">
+    <div class="header-section">
+        <h1>Azure AI Learning Path: Doctoral Revision Index</h1>
+        <p>Comprehensive guide with one-line PhD-level core concepts for every unit.</p>
+        <input type="text" id="searchInput" class="search-box" placeholder="Search for models, concepts, or labs (e.g. 'CNN', 'Regression', 'OCR')...">
+    </div>
+
+    <div id="content-area"></div>
+</div>
+
+<script>
+const data = [
+    {
+        id: "m1",
+        title: "Module 1: Overview of AI concepts",
+        url: "https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/",
+        meta: "40 min • 10 Units",
+        units: [
+            ["Introduction to AI", "2 min", "1-introduction", "Simulation of human cognitive functions through math and algorithms."],
+            ["Generative AI and agents", "3 min", "2-generative-ai", "Systems that create original content and autonomous entities that act to achieve goals."],
+            ["Computer vision", "3 min", "3-computer-vision", "Algorithmic processing of pixels to identify spatial patterns and objects."],
+            ["Speech", "3 min", "4-speech", "Conversion of acoustic waveforms into text and text into synthesized audio."],
+            ["Text and natural language", "3 min", "5-natural-language-processing", "Computational linguistics used to decipher semantic meaning and sentiment from text."],
+            ["Information extraction", "3 min", "6-extract-insights", "Automated retrieval of structured entities from unorganized data sources."],
+            ["Responsible AI", "3 min", "7-responsible-ai", "Ethical framework ensuring fairness, reliability, and transparency in deployment."],
+            ["Exercise - Explore AI agent", "15 min", "7b-exercise", "Practical application of a goal-oriented LLM interface."]
+        ]
+    },
+    {
+        id: "m2",
+        title: "Module 2: Get started in Microsoft Foundry",
+        url: "https://learn.microsoft.com/en-us/training/modules/get-started-foundry/",
+        meta: "50 min • 9 Units",
+        units: [
+            ["AI Applications", "3 min", "2-ai-applications", "Software integrated with intelligent models to solve specific user problems."],
+            ["Components of AI Apps", "3 min", "3-components-ai-app", "The stack of data, compute, models, and endpoints required for functionality."],
+            ["Microsoft Foundry for AI", "3 min", "4-microsoft-foundry-ai", "Unified platform for managing the end-to-end AI lifecycle."],
+            ["Understand Azure", "3 min", "6-understand-azure", "Underlying cloud infrastructure providing scalable GPU and storage resources."],
+            ["Exercise - Setup Foundry", "30 min", "7-exercise-get-started-foundry", "Initializing projects and workspaces within the Foundry environment."]
+        ]
+    },
+    {
+        id: "m3",
+        title: "Module 3: Machine Learning Concepts",
+        url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-machine-learning-concepts/",
+        meta: "1 hr 33 min • 11 Units",
+        units: [
+            ["ML Models", "5 min", "2-machine-learning-models", "Mathematical functions trained to recognize patterns within a specific dataset."],
+            ["Types of ML", "10 min", "3-types-of-machine-learning", "Categorization into Supervised, Unsupervised, and Reinforcement learning."],
+            ["Regression", "12 min", "4-regression", "Predicting a continuous numeric value (e.g., price or temperature)."],
+            ["Binary Classification", "12 min", "5-binary-classification", "Categorizing data into exactly two distinct classes (True/False)."],
+            ["Multiclass Classification", "12 min", "6-multiclass-classification", "Categorizing data into three or more mutually exclusive labels."],
+            ["Clustering", "10 min", "7-clustering", "Grouping data points based on structural similarities without predefined labels."],
+            ["Deep Learning", "12 min", "8-deep-learning", "Multi-layered neural networks modeling complex nonlinear relationships."]
+        ]
+    },
+    {
+        id: "m4",
+        title: "Module 4: Machine Learning in Azure",
+        url: "https://learn.microsoft.com/en-us/training/modules/get-started-machine-learning-azure/",
+        meta: "1 hr 6 min • 9 Units",
+        units: [
+            ["Define the Problem", "4 min", "2-define-problem", "Identifying the specific business metric or outcome the model must optimize."],
+            ["Get & Prepare Data", "5 min", "3-prepare-data", "Cleaning, normalizing, and splitting data into training/validation sets."],
+            ["Azure ML Studio", "3 min", "5-azure-machine-learning-studio", "Low-code/no-code web interface for building and deploying ML experiments."],
+            ["Integrate a Model", "7 min", "6-integrate-model", "Exposing the trained model via a REST API for application consumption."],
+            ["Exercise - Automated ML", "35 min", "7-exercise-automated-machine-learning", "Feature that automatically tests multiple algorithms and hyperparameters."]
+        ]
+    },
+    {
+        id: "m5",
+        title: "Module 5: Generative AI and Agents",
+        url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-generative-ai/",
+        meta: "37 min • 7 Units",
+        units: [
+            ["LLMs", "5 min", "2-large-language-models", "Massive neural networks trained to predict subsequent tokens in text sequences."],
+            ["Prompts", "5 min", "3-prompts", "Specific natural language input used to guide the model's target output."],
+            ["AI Agents", "5 min", "4-ai-agents", "LLM-driven systems capable of calling external tools to complete multi-step tasks."]
+        ]
+    },
+    {
+        id: "m6",
+        title: "Module 6: GenAI in Microsoft Foundry",
+        url: "https://learn.microsoft.com/en-us/training/modules/get-started-generative-ai-foundry/",
+        meta: "1 hr 7 min • 9 Units",
+        units: [
+            ["Foundry Development", "3 min", "3-foundry-generative-ai-development", "Workflow of selecting, fine-tuning, and testing generative models."],
+            ["Model Catalog", "3 min", "4-foundry-model-catalog", "Curated library of first-party (OpenAI) and open-source (Llama) models."],
+            ["Foundry Capabilities", "3 min", "5-foundry-capabilities", "Integrated tools for prompt evaluation and content safety filtering."],
+            ["Observability", "2 min", "6-observability", "Monitoring performance, latency, and token usage in real-time."],
+            ["Exercise - GenAI Lab", "45 min", "7-exercise-generative-ai-foundry", "Building and deploying a generative application in the Foundry portal."]
+        ]
+    },
+    {
+        id: "m7",
+        title: "Module 7: Text Analysis Concepts",
+        url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-text-analysis/",
+        meta: "30 min • 7 Units",
+        units: [
+            ["Tokenization", "3 min", "2-tokenization", "Breaking down text into numerical representations for model processing."],
+            ["Statistical Analysis", "3 min", "3-statistical-text-analysis", "Using word frequency/distribution to determine text importance."],
+            ["Semantic Language Models", "4 min", "4-semantic-language-models", "Encoding words into high-dimensional vectors to capture context."]
+        ]
+    },
+    {
+        id: "m8",
+        title: "Module 8: Text Analysis in Foundry",
+        url: "https://learn.microsoft.com/en-us/training/modules/get-started-text-analysis-foundry/",
+        meta: "45 min • 9 Units",
+        units: [
+            ["Text Analysis Capabilities", "5 min", "3-text-analysis-capabilities", "Suite for sentiment, entity recognition, and summarization."],
+            ["Conversational AI", "3 min", "4-conversational-ai-capabilities", "Technology optimized for turn-based human-to-computer dialogue."],
+            ["Azure Translator", "3 min", "5-translator-capabilities", "Neural Machine Translation (NMT) for real-time multilingual conversion."]
+        ]
+    },
+    {
+        id: "m9",
+        title: "Module 9: AI Speech Concepts",
+        url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-speech/",
+        meta: "28 min • 7 Units",
+        units: [
+            ["Speech Recognition", "3 min", "3-speech-recognition", "Converting audio signals into text using acoustic and language models."],
+            ["Speech Synthesis", "3 min", "4-speech-synthesis", "Generating human-like speech from text using neural voices."]
+        ]
+    },
+    {
+        id: "m10",
+        title: "Module 10: Speech in Foundry",
+        url: "https://learn.microsoft.com/en-us/training/modules/get-started-speech-foundry/",
+        meta: "41 min • 7 Units",
+        units: [
+            ["Get Started with Speech", "3 min", "3-get-started-speech-azure", "Implementing STT and TTS services within the Azure ecosystem."],
+            ["Use Azure Speech", "2 min", "4-use-azure-speech", "API-driven voice integration for real-time application feedback."]
+        ]
+    },
+    {
+        id: "m11",
+        title: "Module 11: Computer Vision Concepts",
+        url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-computer-vision/",
+        meta: "34 min • 9 Units",
+        units: [
+            ["Vision Tasks", "3 min", "2-vision-tasks", "Categories like Image Classification, Object Detection, and Segmentation."],
+            ["CNNs", "3 min", "4-convolutional-neural-networks", "Layers that automatically learn spatial hierarchies of visual features."],
+            ["Vision Transformers", "3 min", "5-vision-transformers", "Architecture using self-attention to understand global image context."],
+            ["Image Generation", "2 min", "6-image-generation", "Using diffusion models to create visual content from text descriptions."]
+        ]
+    },
+    {
+        id: "m12",
+        title: "Module 12: Vision in Foundry",
+        url: "https://learn.microsoft.com/en-us/training/modules/get-started-computer-vision-foundry/",
+        meta: "50 min • 8 Units",
+        units: [
+            ["Image Analysis", "4 min", "3-image-analysis-capabilities", "Managed APIs for analyzing visual content without custom training."],
+            ["Face Service", "3 min", "4-face-service-capabilities", "Specialized tools for facial detection, recognition, and attributes."]
+        ]
+    },
+    {
+        id: "m13",
+        title: "Module 13: Information Extraction Concepts",
+        url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-content-understanding/",
+        meta: "28 min • 7 Units",
+        units: [
+            ["OCR", "3 min", "3-optical-character-recognition", "Identifying text characters from physical images or digital scans."],
+            ["Field Mapping", "3 min", "4-field-extraction-mapping", "Assigning extracted text to specific semantic database keys."]
+        ]
+    },
+    {
+        id: "m14",
+        title: "Module 14: Extraction in Foundry",
+        url: "https://learn.microsoft.com/en-us/training/modules/get-started-content-understanding-foundry/",
+        meta: "1 hr • 9 Units",
+        units: [
+            ["Document Intelligence", "5 min", "5-extract-azure-document-intelligence", "Understanding layout and structure of complex forms and receipts."],
+            ["Azure AI Search", "5 min", "6-azure-ai-search", "Search-as-a-Service providing indexing and vector search."]
+        ]
+    }
+];
+
+function render() {
+    const content = document.getElementById('content-area');
+    const nav = document.getElementById('module-nav');
+    
+    data.forEach(mod => {
+        const navLink = document.createElement('a');
+        navLink.href = `#${mod.id}`;
+        navLink.className = 'nav-link';
+        navLink.innerText = mod.title;
+        nav.appendChild(navLink);
+
+        const section = document.createElement('div');
+        section.className = 'module-container';
+        section.id = mod.id;
+        
+        let unitHtml = mod.units.map(u => `
+            <a href="${mod.url}${u[2]}/" target="_blank" class="unit-item">
+                <div class="unit-top">
+                    <span class="unit-title">${u[0]}</span>
+                    <span class="unit-time">${u[1]}</span>
+                </div>
+                <div class="unit-concept">${u[3]}</div>
+            </a>
+        `).join('');
+
+        section.innerHTML = `
+            <div class="module-header">
+                <h2><a href="${mod.url}" target="_blank">${mod.title}</a></h2>
+                <div class="module-meta">${mod.meta}</div>
+            </div>
+            <div class="unit-grid">${unitHtml}</div>
+        `;
+        content.appendChild(section);
+    });
+}
+
+document.getElementById('searchInput').addEventListener('input', function(e) {
+    const term = e.target.value.toLowerCase();
+    document.querySelectorAll('.module-container').forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(term) ? 'block' : 'none';
+    });
+});
+
+render();
+</script>
+
+</body>
+</html>
