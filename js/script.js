@@ -7,19 +7,19 @@ $(window).on("scroll", function () {
 });
 
 $("#go-fb").click(function () {
-   window.location.href = "https://www.facebook.com/muhammadzulfacom";
+   window.location.href = "https://www.facebook.com/0xansr";
 })
 
 $("#go-tl").click(function () {
-   window.location.href = "https://t.me/mhmmdzlfa";
+   window.location.href = "https://t.me/oxansr";
 })
 
 $("#go-ig").click(function () {
-   window.location.href = "https://www.instagram.com/mhmmd.zlfa";
+   window.location.href = "https://www.instagram.com/0xansr";
 })
 
 $("#go-github").click(function () {
-   window.location.href = "https://www.github.com/muhammadzulfa";
+   window.location.href = "https://www.github.com/0xansr";
 })
 
 particlesJS("particles-js", {
@@ -163,17 +163,17 @@ $(window).on("scroll", function () {
 });
 
 $("#go-fb").click(function () {
-   window.location.href = "https://www.facebook.com/muhammadzulfacom";
+   window.location.href = "https://www.facebook.com/0xansr";
 })
 
 $("#go-tl").click(function () {
-   window.location.href = "https://t.me/mhmmdzlfa";
+   window.location.href = "https://t.me/oxansr";
 })
 
 $("#go-ig").click(function () {
-   window.location.href = "https://www.instagram.com/mhmmd.zlfa";
+   window.location.href = "https://www.instagram.com/0xansr";
 })
 
 $("#go-github").click(function () {
-   window.location.href = "https://www.github.com/muhammadzulfa";
+   window.location.href = "https://www.github.com/0xansr";
 })
