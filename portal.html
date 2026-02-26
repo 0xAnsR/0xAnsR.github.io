@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPortal | Test Prep & Job Hub</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Urdu:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #014EAA;
+            --sidebar-width: 280px;
+            --soft-bg: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--soft-bg);
+            overflow-x: hidden;
+        }
+
+        .urdu-text {
+            font-family: 'Noto Sans Urdu', serif;
+            direction: rtl;
+            text-align: right;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+
+        /* Sidebar Styling */
+        #sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: var(--primary-blue);
+            color: white;
+            text-align: center;
+        }
+
+        .nav-link {
+            padding: 15px 25px;
+            color: #4a5568;
+            border-left: 4px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #edf2f7;
+            color: var(--primary-blue);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        /* Content Area */
+        #content {
+            margin-left: var(--sidebar-width);
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .portal-card {
+            background: white;
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Auth Overlay */
+        #auth-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Job Ticker */
+        .update-ticker {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ffc107;
+        }
+
+        .revision-line {
+            background: #e1f5fe;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.9rem;
+            color: #0277bd;
+            font-weight: 500;
+        }
+
+        @media (max-width: 992px) {
+            #sidebar { margin-left: calc(-1 * var(--sidebar-width)); }
+            #content { margin-left: 0; }
+            #sidebar.active { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Auth Overlay -->
+    <div id="auth-overlay">
+        <div class="auth-box shadow-lg">
+            <h3 class="text-center mb-4">Portal Login</h3>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" class="form-control" required placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" class="form-control" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Access Portal</button>
+                <p class="text-center mt-3 small">New user? <a href="#" onclick="toggleAuth()">Register here</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h4>EduPortal</h4>
+            <small>Prep & Jobs</small>
+        </div>
+        <div class="p-3">
+            <div class="text-center mb-4">
+                <img src="img/0xAnsR.jpg" class="rounded-circle mb-2" width="60">
+                <p class="small mb-0" id="user-display">Welcome, Guest</p>
+                <span class="badge badge-info" id="visit-count">Visits: 0</span>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a href="#" class="nav-link active" onclick="loadPage('dashboard')"><i class="fas fa-home mr-2"></i> Dashboard</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" onclick="loadPage('subjects')"><i class="fas fa-book mr-2"></i> Subjects</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" onclick="loadPage('jobs')"><i class="fas fa-briefcase mr-2"></i> Job Portal</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" onclick="loadPage('notes')"><i class="fas fa-file-pdf mr-2"></i> PDFs & Notes</a></li>
+                <li class="nav-item mt-5"><a href="#" class="nav-link text-danger" onclick="logout()"><i class="fas fa-sign-out-alt mr-2"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div id="content">
+        <button id="sidebarCollapse" class="btn btn-primary d-lg-none mb-3">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div id="main-view">
+            <!-- Dashboard View -->
+            <div id="dashboard-view">
+                <div class="update-ticker shadow-sm d-flex align-items-center">
+                    <span class="badge badge-danger mr-3">LATEST</span>
+                    <marquee>PPSC Result Announced for Junior Clerk | New Jobs in Education Department | CSS 2026 Registration Open</marquee>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="portal-card p-4">
+                            <h3>Current Topic: <span class="text-primary">Microprocessor Architecture</span></h3>
+                            <div class="mt-4">
+                                <p class="lead">Introduction to 8086 Pins and Functions</p>
+                                <div class="urdu-text p-3 bg-light rounded mb-3">
+                                    8086 ایک 16 بٹ مائکرو پروسیسر ہے جس میں 20 بٹ ایڈریس بس ہے، جو 1MB تک میموری کو ایڈریس کر سکتا ہے۔ اس میں 40 پنیں ہوتی ہیں جو مختلف کام سرانجام دیتی ہیں۔
+                                </div>
+                                <p>The 8086 is a 16-bit microprocessor with a 20-bit address bus, capable of addressing up to 1MB of memory. It has 40 pins providing various control signals.</p>
+                                
+                                <h5 class="mt-4">Revision Lines (Memory Aids)</h5>
+                                <div>
+                                    <span class="revision-line">20-bit Address = 1MB RAM</span>
+                                    <span class="revision-line">16-bit Data Bus</span>
+                                    <span class="revision-line">40 Pins Package</span>
+                                    <span class="revision-line">Dual Mode: Min/Max</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portal-card p-4">
+                            <h5><i class="fas fa-tasks mr-2"></i> Quick MCQ Check</h5>
+                            <hr>
+                            <div id="mcq-container">
+                                <p><strong>Q1: What is the address bus size of the 8086 microprocessor?</strong></p>
+                                <div class="custom-control custom-radio mb-2">
+                                    <input type="radio" id="q1a1" name="q1" class="custom-control-input">
+                                    <label class="custom-control-label" for="q1a1">16-bit</label>
+                                </div>
+                                <div class="custom-control custom-radio mb-2">
+                                    <input type="radio" id="q1a2" name="q1" class="custom-control-input">
+                                    <label class="custom-control-label" for="q1a2">20-bit</label>
+                                </div>
+                                <div class="custom-control custom-radio mb-2">
+                                    <input type="radio" id="q1a3" name="q1" class="custom-control-input">
+                                    <label class="custom-control-label" for="q1a3">32-bit</label>
+                                </div>
+                                <button class="btn btn-sm btn-primary mt-3" onclick="checkAnswer()">Submit Answer</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portal-card p-4 bg-primary text-white">
+                            <h5>Daily Progress</h5>
+                            <div class="progress mt-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 65%;"></div>
+                            </div>
+                            <small class="d-block mt-2">65% of today's topics completed</small>
+                        </div>
+
+                        <div class="portal-card p-4">
+                            <h5>Job Portal Updates</h5>
+                            <ul class="list-unstyled mt-3">
+                                <li class="mb-3 border-bottom pb-2">
+                                    <a href="#" class="text-dark font-weight-bold d-block">PPSC Educators 2026</a>
+                                    <small class="text-muted">Last Date: 15 March 2026</small>
+                                </li>
+                                <li class="mb-3 border-bottom pb-2">
+                                    <a href="#" class="text-dark font-weight-bold d-block">FPSC Customs Officer</a>
+                                    <small class="text-muted">Last Date: 20 March 2026</small>
+                                </li>
+                            </ul>
+                            <button class="btn btn-outline-primary btn-sm btn-block">View All Jobs</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Portal State Management
+        $(document).ready(function() {
+            // Visit Counter logic
+            let visits = localStorage.getItem('portal_visits') || 0;
+            visits = parseInt(visits) + 1;
+            localStorage.setItem('portal_visits', visits);
+            $('#visit-count').text('Visits: ' + visits);
+
+            // Auth Check
+            if(localStorage.getItem('portal_user')) {
+                $('#auth-overlay').hide();
+                $('#user-display').text('Welcome, ' + localStorage.getItem('portal_user'));
+            }
+
+            // Login Logic
+            $('#login-form').on('submit', function(e) {
+                e.preventDefault();
+                const user = $('#username').val();
+                localStorage.setItem('portal_user', user);
+                $('#auth-overlay').fadeOut();
+                $('#user-display').text('Welcome, ' + user);
+            });
+
+            // Sidebar Toggle
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+
+        function logout() {
+            localStorage.removeItem('portal_user');
+            location.reload();
+        }
+
+        function checkAnswer() {
+            if($('#q1a2').is(':checked')) {
+                alert('Correct! 8086 has 20-bit Address Bus.');
+            } else {
+                alert('Wrong! Try again. Hint: 2^20 = 1MB');
+            }
+        }
+
+        function loadPage(page) {
+            $('.nav-link').removeClass('active');
+            $(`[onclick="loadPage('${page}')"]`).addClass('active');
+            // Simplified routing for prototype
+            console.log('Navigating to:', page);
+        }
+    </script>
+</body>
+</html>
