@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Global Strategic Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            color: #1e293b;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #0f172a;
+            letter-spacing: -1px;
+        }
+
+        .main-layout {
+            max-width: 1440px;
+            margin: auto;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            flex: 0 0 280px;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 12px;
+            margin: 0 0 25px 0;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        .continent-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .continent-item {
+            margin-bottom: 12px;
+        }
+
+        .continent-btn {
+            background: #f1f5f9;
+            border: 1px solid transparent;
+            color: #475569;
+            width: 100%;
+            text-align: left;
+            padding: 14px 20px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .continent-btn:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+            transform: translateX(4px);
+        }
+
+        .continent-btn.active {
+            background: #0f172a;
+            color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Color Indicators */
+        .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; border: 1.5px solid rgba(255,255,255,0.2); }
+        .dot-world { background: #cbd5e1; }
+        .dot-africa { background: #5e8a8b; }
+        .dot-asia { background: #3eb8c5; }
+        .dot-europe { background: #33ffcc; }
+        .dot-na { background: #48a584; }
+        .dot-sa { background: #3eb8c5; }
+        .dot-oceania { background: #5e8a8b; }
+        .dot-me { background: #945cbf; }
+
+        /* Map Container */
+        .mapcontainer {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .mapael .map {
+            background-color: #f0f9ff; /* Subtle water blue */
+            position: relative;
+            border-radius: 24px;
+            /*min-height: 700px;*/
+            overflow: hidden;
+        }
+
+        /* Zoom UI */
+        .mapael .zoomButton {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #0f172a;
+            width: 44px;
+            height: 44px;
+            line-height: 42px;
+            text-align: center;
+            border-radius: 14px;
+            cursor: pointer;
+            position: absolute;
+            left: 30px;
+            font-size: 22px;
+            transition: all 0.2s ease;
+            z-index: 10;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .mapael .zoomButton:hover {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.05);
+        }
+
+        .mapael .zoomReset { top: 30px; }
+        .mapael .zoomIn { top: 85px; }
+        .mapael .zoomOut { top: 140px; }
+
+        /* Labels */
+        .mapael .map svg text {
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            font-weight: 700;
+            font-size: 9px;
+            fill: #1e293b;
+            opacity: 0;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .mapcontainer.zoomed-in .mapael .map svg text {
+            opacity: 0.9 !important;
+        }
+
+        /* Tooltip */
+        .mapael .mapTooltip {
+            position: absolute;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(4px);
+            border-radius: 12px;
+            padding: 10px 16px;
+            z-index: 1000;
+            display: none;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mapael/2.2.0/js/jquery.mapael.min.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mapael@2.2.0/js/maps/world_countries.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            // Precise groupings and colors from contiens.svg
+            var config = {
+                africa: { color: "#5e8a8b", countries: ["AO", "DZ", "BI", "BJ", "BF", "CM", "CF", "TD", "KM", "CG", "CD", "DJ", "EG", "GQ", "ER", "ET", "GA", "GM", "GH", "GN", "GW", "CI", "KE", "LS", "LR", "LY", "MG", "MW", "ML", "MR", "MU", "YT", "MA", "MZ", "NA", "NE", "NG", "RE", "RW", "ST", "SN", "SC", "SL", "SO", "ZA", "SS", "SD", "SZ", "TZ", "TG", "TN", "UG", "EH", "ZM", "ZW"], zoom: {lat: 1.6, lon: 16.5, level: 3} },
+                europe: { color: "#33ffcc", countries: ["AL", "AD", "AT", "BY", "BE", "BA", "BG", "HR", "CZ", "DK", "EE", "FO", "FI", "FR", "DE", "GI", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MK", "MT", "MD", "MC", "ME", "NL", "NO", "PL", "PT", "RO", "RU", "SM", "RS", "SK", "SI", "ES", "SE", "CH", "UA", "GB", "VA"], zoom: {lat: 53, lon: 9, level: 4} },
+                asia: { color: "#3eb8c5", countries: ["BD", "BN", "BT", "KH", "CN", "IN", "ID", "JP", "LA", "MY", "MV", "MN", "NP", "PH", "SG", "LK", "TW", "TH", "TL", "VN"], zoom: {lat: 34, lon: 100, level: 2.2} },
+                middle_east: { color: "#945cbf", countries: ["AE", "AF", "AM", "AZ", "BH", "CY", "GE", "IR", "IQ", "IL", "JO", "KW", "LB", "OM", "PS", "QA", "SA", "SY", "TR", "YE", "UZ", "TM", "TJ", "KZ", "KG", "PK"], zoom: {lat: 29, lon: 47, level: 4.5} },
+                north_america: { color: "#48a584", countries: ["AG", "BS", "BB", "BZ", "BM", "VG", "CA", "KY", "CR", "CU", "DM", "DO", "SV", "GL", "GD", "GP", "GT", "HT", "HN", "JM", "MQ", "MS", "CW", "NI", "PA", "PR", "KN", "LC", "PM", "VC", "SX", "TT", "TC", "US", "VI", "MX"], zoom: {lat: 48, lon: -100, level: 2.2} },
+                south_america: { color: "#3eb8c5", countries: ["AR", "BO", "BR", "CL", "CO", "EC", "FK", "GF", "GY", "PY", "PE", "SR", "UY", "VE"], zoom: {lat: -21, lon: -60, level: 3} },
+                oceania: { color: "#5e8a8b", countries: ["AS", "AU", "CK", "FJ", "PF", "GU", "KI", "MH", "FM", "NR", "NC", "NZ", "NU", "NF", "MP", "PW", "PG", "PN", "WS", "SB", "TK", "TO", "TV", "VU", "WF"], zoom: {lat: -25, lon: 135, level: 3.5} }
+            };
+
+            var $mapcontainer = $(".mapcontainer");
+
+            $mapcontainer.mapael({
+                map: {
+                    name: "world_countries",
+                    zoom: { enabled: true, maxLevel: 20 },
+                    defaultArea: {
+                        attrs: { fill: "#ffffff", stroke: "#e2e8f0", "stroke-width": 0.5 },
+                        attrsHover: { fill: "#1e293b", stroke: "#ffffff", "stroke-width": 1 },
+                        text: {
+                            content: function(area) {
+                                var name = area.name || (area.attrs && area.attrs.name);
+                                if (name && name !== "{name}" && name !== "undefined") return name;
+                                return area.id || "";
+                            }
+                        },
+                        tooltip: {
+                            content: function(area) {
+                                var name = area.name || (area.attrs && area.attrs.name);
+                                if (!name || name === "{name}" || name === "undefined") name = area.id || "Region";
+                                return "<span>" + name + "</span>";
+                            }
+                        }
+                    }
+                }
+            });
+
+            function updateMapColors(activeContinent) {
+                var updatedOptions = { "areas": {} };
+                
+                $.each(config, function(id, data) {
+                    var isSelected = (activeContinent === "world" || activeContinent === id);
+                    var fill = isSelected ? data.color : "#f1f5f9";
+                    var stroke = isSelected ? "#ffffff" : "#e2e8f0";
+                    var strokeWidth = isSelected ? 0.8 : 0.3;
+
+                    $.each(data.countries, function(i, code) {
+                        updatedOptions.areas[code] = {
+                            attrs: { fill: fill, stroke: stroke, "stroke-width": strokeWidth }
+                        };
+                    });
+                });
+
+                $mapcontainer.trigger("update", [{ mapOptions: updatedOptions }]);
+            }
+
+            $mapcontainer.on("afterZoom", function (e, id, zoomLevel) {
+                if (zoomLevel > 1.5) $mapcontainer.addClass("zoomed-in");
+                else $mapcontainer.removeClass("zoomed-in");
+            });
+
+            $(".continent-btn").on("click", function() {
+                var id = $(this).data("continent");
+                $(".continent-btn").removeClass("active");
+                $(this).addClass("active");
+
+                if (id === "world") {
+                    $mapcontainer.trigger("zoom", { level: 0 });
+                    updateMapColors("world");
+                } else {
+                    var data = config[id];
+                    $mapcontainer.trigger("zoom", { latitude: data.zoom.lat, longitude: data.zoom.lon, level: data.zoom.level });
+                    updateMapColors(id);
+                }
+            });
+
+            // Initial Load
+            setTimeout(function() {
+                $(".continent-btn[data-continent='oceania']").trigger("click");
+            }, 500);
+        });
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Global Insight Navigator</h1>
+
+    <div class="main-layout">
+        <div class="sidebar">
+            <h2>Regions</h2>
+            <ul class="continent-list">
+                <li class="continent-item"><button class="continent-btn" data-continent="world"><span class="dot dot-world"></span>Whole World</button></li>
+                <li class="continent-item"><button class="continent-btn" data-continent="africa"><span class="dot dot-africa"></span>Africa</button></li>
+                <li class="continent-item"><button class="continent-btn" data-continent="asia"><span class="dot dot-asia"></span>Asia</button></li>
+                <li class="continent-item"><button class="continent-btn" data-continent="europe"><span class="dot dot-europe"></span>Europe</button></li>
+                <li class="continent-item"><button class="continent-btn" data-continent="middle_east"><span class="dot dot-me"></span>Middle East</button></li>
+                <li class="continent-item"><button class="continent-btn" data-continent="north_america"><span class="dot dot-na"></span>North America</button></li>
+                <li class="continent-item"><button class="continent-btn" data-continent="south_america"><span class="dot dot-sa"></span>South America</button></li>
+                <li class="continent-item"><button class="continent-btn" data-continent="oceania"><span class="dot dot-oceania"></span>Oceania</button></li>
+            </ul>
+        </div>
+
+        <div class="mapcontainer">
+            <div class="map"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Strategic Geospatial Interface | Professional Data Platform</p>
+    </div>
+</div>
+
+</body>
+</html>
